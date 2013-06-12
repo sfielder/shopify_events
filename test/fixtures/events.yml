@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  start_datetime: 2013-06-11 22:44:12
+  end_datetime: 2013-06-11 22:44:12
+  venue_street_address: 
+
+two:
+  title: MyString
+  start_datetime: 2013-06-11 22:44:12
+  end_datetime: 2013-06-11 22:44:12
+  venue_street_address: 
