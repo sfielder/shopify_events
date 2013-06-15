@@ -7,12 +7,12 @@
 
 <p>
   <b>Start datetime:</b>
-  <%= @event.start_datetime %>
+  <%= @event.start_datetime.to_s(:pretty) %>
 </p>
 
 <p>
   <b>End datetime:</b>
-  <%= @event.end_datetime %>
+  <%= @event["end_datetime"].to_s(:pretty) %>
 </p>
 
 <p>

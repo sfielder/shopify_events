@@ -1,64 +1,37 @@
-<header class="jumbotron">
-  <div class="inner">
-    <div class="container">
-      <h1 style="letter-spacing:-3px; margin-bottom:20px;">Where do I start?</h1>
-      <p class="lead">An <strong>intro</strong> to using the Shopify App Template<br/>
-      including information on the <strong>Shopify API</strong> and <strong>Bootstrap,</strong><br/>
-      just to get the ball rolling.</p>
-    </div><!-- /container -->
-  </div>
-</header>
-
-<div class="row">
-  <div class="span3">
-    <div class="well">  
-      <h3>Check out the <code>home_controller</code></h3>
-      <hr style="margin:2px 0 7px"/>
-      <p>The controller in this demo application fetches the newest 5 orders and products and makes them available as instance variables <code>@orders</code> and <code>@products</code></p>
-    
-      <br/>
-    
-      <h3>Take a look at <code>index.html.erb</code></h3>
-      <hr style="margin:2px 0 7px"/>
-      <p>Index is the Ruby template you are currently viewing. Have a look at the markup and Ruby code to see how the Shopify API is being used. It's located at <code>views/home/index.html.erb</code></p>
-    </div>
-    
-    <h3>Additional Docs</h3>
-    <p>You can become an expert pretty quickly by reading up on these docs:</p>
-    
-    <ul>
-      <li>
-        <%= link_to 'API documentation', 'http://www.shopify.com/developers/api/' %>
-        <span class="note">Learn what you can do with the Shopify API</span>
-      </li><br/>
-      <li>
-        <%= link_to 'Bootstrap documentation', 'http://twitter.github.com/bootstrap/' %>
-        <span class="note">Find out what you can do with Twitter Bootstrap</span>
-      </li><br/>
-      <li>
-        <%= link_to 'Wiki', 'http://wiki.shopify.com/' %>
-        <span class="note">Get more information and share your knowledge</span>
-      </li><br/>
-      <li>
-        <%= link_to 'Forum', 'http://forums.shopify.com/community' %>
-        <span class="note">Ask questions and see what others already wanted to know</span>
-      </li>
-    </ul>
-  
-    <hr/>
-  
-    <h3>Once you're ready</h3>
-  
-    <p>We'd love to see what you create using the Shopify API. You can keep up to date on the latest and greatest via the <%= link_to 'Shopify API Twitter Account', 'http://www.twitter.com/shopifyapi' %>. You can also read the latest information on the <%= link_to 'API Publishing Page', 'http://www.shopify.com/developers/publishing/' %>.</p>
-    
-    <br/>
-    
-    <a href="https://twitter.com/shopifyapi" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shopifyapi</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </div> <!-- span3 / left-column -->
 
 
-  <div class="span8 offset1">
+<% content_for :statsheader do %>
+  	<!-- upper main stats -->
+            <div id="main-stats">
+                <div class="row-fluid stats-row">
+                    
+                    <div class="span4 stat">
+                        <div class="data">
+                            <span class="number">40</span>
+                            Registrations
+                        </div>
+                        <span class="date">Today</span>
+                    </div>
+                    <div class="span4 stat">
+                        <div class="data">
+                            <span class="number">$2,900</span>
+                            event revenue
+                        </div>
+                        <span class="date">This month</span>
+                    </div>
+                    <div class="span4 stat last">
+                        <div class="data">
+                            <span class="number">50</span>
+                            events
+                        </div>
+                        <span class="date">last 30 days</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end upper main stats -->
+<% end %>
+
+  <div class="span8 ">
     <h2>Recent orders</h2>
   
     <% if @orders.blank? %>

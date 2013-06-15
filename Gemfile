@@ -10,6 +10,12 @@ gem 'mongoid-multitenancy'
 
 gem 'shopify_app'
 
+gem 'simple_form'
+gem 'country_select'
+gem 'bootstrap-datetimepicker-rails'
+
+gem 'chronic'
+
 #RAILS ADMIN
 gem 'rails_admin'
 

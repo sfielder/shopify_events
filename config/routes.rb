@@ -5,13 +5,14 @@ ShopifyEvents::Application.routes.draw do
 
   match 'welcome' => 'home#welcome'
   match 'design' => 'home#design'
-
+  
+  match 'logout' => 'sessions#destroy'
+  
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
     get 'auth/shopify/callback' => :show
     delete 'logout' => :destroy
-    
   end
   
   resources :events

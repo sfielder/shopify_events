@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-
+  
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -43,6 +43,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    puts "****************************PARAMS #{params}"
     @event = Event.new(params[:event])
 
     respond_to do |format|
@@ -59,6 +60,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
+    puts "****************************PARAMS #{params}"
     @event = Event.find(params[:id])
 
     respond_to do |format|

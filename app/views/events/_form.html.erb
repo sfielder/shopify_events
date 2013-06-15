@@ -1,33 +1,85 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+<%= simple_form_for @event, :html => { :class => 'form-vertical' } do |c| %>
+  
+  <div class="well">
+  	<%= c.input :title, :required => true %>
+  	
+  	<%= c.input :start_datetime, :required => true %> 
+  	<%= c.input :end_datetime, :required => true %>
+  	<%= c.input :venue_street_address, :required => true %>
+  	<%= c.input :venue_secondary_address %> 
+  	<%= c.input :venue_city, :required => true %>
+  	<%= c.input :venue_state_province, :required => true %>
+  	<%= c.input :venue_country, :required => true %> 
+  	<%= c.input :venue_virtual, :as => :boolean %>
+  	
+  <div class="form-actions">
+    <%= c.button :submit, :class => 'btn-flat primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                events_path, :class => 'btn-flat inverse' %>
   </div>
-  <div class="field">
-    <%= f.label :start_datetime %><br />
-    <%= f.datetime_select :start_datetime %>
+  
   </div>
-  <div class="field">
-    <%= f.label :end_datetime %><br />
-    <%= f.datetime_select :end_datetime %>
-  </div>
-  <div class="field">
-    <%= f.label :venue_street_address %><br />
-    <%= f.text_field :venue_street_address %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+
 <% end %>
+
+<% content_for :jsfooter do %>
+
+
+<%= javascript_include_tag "../mobiscroll-2.1/js/mobiscroll-2.1.custom.min.js"%>
+<script>
+	
+	$(function(){
+	    var now = new Date();
+	
+	    $('#event_start_datetime').scroller({
+	        preset: 'datetime',
+	        minDate: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+	        theme: 'ios',
+	        display: 'bottom',
+	        mode: 'scroller'
+	    });    
+	
+	    $('#show').click(function(){
+	        $('#it').scroller('show'); 
+	        return false;
+	    });
+	    $('#clear').click(function () {
+	        $('#it').val('');
+	        return false;
+	    });
+	});
+	
+	$(function(){
+	    var now = new Date();
+	
+	    $('#event_end_datetime').scroller({
+	        preset: 'datetime',
+	        minDate: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+	        theme: 'ios',
+	        display: 'bottom',
+	        mode: 'scroller'
+	    });    
+	
+	    $('#show').click(function(){
+	        $('#it').scroller('show'); 
+	        return false;
+	    });
+	    $('#clear').click(function () {
+	        $('#it').val('');
+	        return false;
+	    });
+	});
+	
+	
+</script>
+ 
+<% end %>
+
+
+
+
+
+

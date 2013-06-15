@@ -13,12 +13,6 @@ class SessionsController < ApplicationController
       session[:shopify] = sess        
       flash[:notice] = "Logged in"
       
-      #UPDATE TO INCLUDE MULTITENANCY SELECTION UPON LOGIN
-      
-      current_account = Account.find_or_create_by(shopify_url: shop_session.url)
-      
-      Mongoid::Multitenancy.current_tenant = current_account unless current_account.nil?
-    
       redirect_to return_address
     else
       flash[:error] = "Could not log in to Shopify store."
