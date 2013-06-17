@@ -1,26 +1,34 @@
 
-
-<%= simple_form_for @event, :html => { :class => 'form-vertical' } do |c| %>
+<br/>
+<%= simple_form_for @event, :html => { :class => 'form-vertical well' } do |c| %>
   
-  <div class="well">
+ <div class="row-fluid">
+  <div class="span5">
+  	<h3>EVENT DETAILS</h3><br/>
   	<%= c.input :title, :required => true %>
-  	
   	<%= c.input :start_datetime, :required => true %> 
   	<%= c.input :end_datetime, :required => true %>
+  	</div>
+  	
+  	
+  	<div class="span5">
+  	<h3>VENUE DETAILS</h3> <br/>
+  	<%= c.input :venue_virtual, :as => :boolean %>
   	<%= c.input :venue_street_address, :required => true %>
   	<%= c.input :venue_secondary_address %> 
   	<%= c.input :venue_city, :required => true %>
   	<%= c.input :venue_state_province, :required => true %>
   	<%= c.input :venue_country, :required => true %> 
-  	<%= c.input :venue_virtual, :as => :boolean %>
   	
+  	</div>
+  </div>	
   <div class="form-actions">
     <%= c.button :submit, :class => 'btn-flat primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 events_path, :class => 'btn-flat inverse' %>
   </div>
   
-  </div>
+  
   
 
 <% end %>

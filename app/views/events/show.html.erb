@@ -1,25 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Event -%>
 
-<p>
-  <b>Title:</b>
-  <%= @event.title %>
-</p>
+<h3>Event: <%= @event.title.upcase %></h3>
 
-<p>
-  <b>Start datetime:</b>
-  <%= @event.start_datetime.to_s(:pretty) %>
-</p>
+<br/>
 
-<p>
-  <b>End datetime:</b>
-  <%= @event["end_datetime"].to_s(:pretty) %>
-</p>
-
-<p>
-  <b>Venue street address:</b>
-  <%= @event.venue_street_address %>
-</p>
+<dl class="dl-horizontal">
+		  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+		  <dd><%= @event.title %></dd>
+		  <dt><strong><%= model_class.human_attribute_name(:start_datetime) %>:</strong></dt>
+		  <dd><%= @event.start_datetime %></dd>
+		  <dt><strong><%= model_class.human_attribute_name(:end_datetime) %>:</strong></dt>
+		  <dd><%= @event.end_datetime %></dd>
+		  <dt><strong><%= model_class.human_attribute_name(:venue_street_address) %>:</strong></dt>
+		  <dd><%= @event.title %></dd>
+		  
+		  
+		  
+	</dl>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
+<div class="form-actions">
+ 	<%= link_to t('.back', :default => t("helpers.links.back")),
+		              events_path, :class => 'btn-flat inverse'  %>
+		  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+		              edit_event_path(@event), :class => 'btn-flat default' %>
+	
+	
+		</div>	

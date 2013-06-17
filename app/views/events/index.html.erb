@@ -34,8 +34,8 @@
     <% @events.each do |i| %>
       <tr>
         <td><%= i.title %></td>
-        <td><%= i["start_datetime_string"]  %></td>
-        <td><%= i["end_datetime_string"] %></td>
+        <td><%= i.start_datetime  %></td>
+        <td><%= i.end_datetime %></td>
         <td><%= link_to 'Show', event_path(i) %></td>
     	<td><%= link_to 'Edit', edit_event_path(i) %></td>
     	<td><%= link_to 'Destroy', i, method: :delete, data: { confirm: 'Are you sure?' } %></td>

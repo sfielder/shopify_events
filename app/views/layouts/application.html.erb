@@ -104,7 +104,9 @@
           
             <!-- end upper main stats -->
 			<div id="pad-wrapper">
-            
+            <%- flash.each do |k, v| %>
+  				<div id="<%= k %>" class="alert alert-success"><%= v %></div>
+  			<% end %>
                <%= yield %>
 			</div>
         </div>

@@ -5,8 +5,8 @@ class Event
   include Mongoid::Multitenancy::Document
   
   field :title, type: String
-  field :start_datetime, type: DateTime
-  field :end_datetime, type: DateTime
+  field :start_datetime, type: String
+  field :end_datetime, type: String
   field :venue_street_address, type: String
   field :venue_secondary_address, type: String
   field :venue_city, type: String
