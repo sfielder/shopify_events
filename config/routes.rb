@@ -1,4 +1,5 @@
 ShopifyEvents::Application.routes.draw do
+  
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -15,7 +16,8 @@ ShopifyEvents::Application.routes.draw do
     delete 'logout' => :destroy
   end
   
-  resources :events
+  resources :events 
+  resources :ticket_types
 
   root :to => 'home#index'
   

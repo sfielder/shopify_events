@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <%= csrf_meta_tags %>
+  
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="Description" content="<%= yield :metadescription %>">
@@ -82,7 +83,7 @@
                 </div>
                 <% end %>
             	<%= link_to root_path do %>
-            		<i class="sidebar-gear"></i>
+            		<i class="icon-group"></i>
                     <span>Attendees</span>
             	<% end %>
             	
@@ -115,10 +116,7 @@
 	
 
 	<!-- scripts -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery-ui-1.10.2.custom.min.js"></script>
-    
+    <%= javascript_include_tag :application %>
     <%= yield :jsfooter %>
     
    

@@ -17,5 +17,7 @@ class Event
   belongs_to :account
   tenant(:account)
   
+  has_many :ticket_types
+  
   
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  order_number: MyString
+  quantity: 1
+  total: 1.5
+
+two:
+  order_number: MyString
+  quantity: 1
+  total: 1.5

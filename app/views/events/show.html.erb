@@ -1,30 +1,151 @@
 <%- model_class = Event -%>
 
-<h3>Event: <%= @event.title.upcase %></h3>
+
+
+<div class="row-fluid">
+<h2><%= @event.title.upcase %></h2>
+<div class="pull-right">
+		<%= link_to t('.edit', :default => t("helpers.links.edit")),
+		              edit_event_path(@event), :class => 'btn-flat default pull-right' %>
+	</div>
+</div>
 
 <br/>
+<!-- upper main stats -->
+            <div id="main-stats">
+                <div class="row-fluid stats-row">
+                    
+                    <div class="span4 stat">
+                        <div class="data">
+                            <span class="number">40</span>
+                            Registrations
+                        </div>
+                        <span class="date">Today</span>
+                    </div>
+                    <div class="span4 stat">
+                        <div class="data">
+                            <span class="number">$2,900</span>
+                            event revenue
+                        </div>
+                        <span class="date">This month</span>
+                    </div>
+                    <div class="span4 stat last">
+                        <div class="data">
+                            <span class="number">50</span>
+                            events
+                        </div>
+                        <span class="date">last 30 days</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end upper main stats -->
+<br/>
 
+
+
+<div class="row-fluid">
+	<div class="span6 well">
+		<h3>EVENT DETAILS</h3>
 <dl class="dl-horizontal">
+	
 		  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-		  <dd><%= @event.title %></dd>
+		  <dd><%= @event.title.upcase %></dd>
 		  <dt><strong><%= model_class.human_attribute_name(:start_datetime) %>:</strong></dt>
 		  <dd><%= @event.start_datetime %></dd>
 		  <dt><strong><%= model_class.human_attribute_name(:end_datetime) %>:</strong></dt>
 		  <dd><%= @event.end_datetime %></dd>
-		  <dt><strong><%= model_class.human_attribute_name(:venue_street_address) %>:</strong></dt>
-		  <dd><%= @event.title %></dd>
-		  
 		  
 		  
 	</dl>
+	</div>
+	
+	<div class="span6 well">
+		<h3>VENUE DETAILS</h3>
+		<dl class="dl-horizontal">
+	
+		  <dt><strong><%= model_class.human_attribute_name(:venue_street_address) %>:</strong></dt>
+		  <dd><%= @event.venue_street_address %></dd>
+		  <dt><strong><%= model_class.human_attribute_name(:venue_secondary_address) %>:</strong></dt>
+		  <dd><%= @event.venue_secondary_address %></dd>
+		  <dt><strong><%= model_class.human_attribute_name(:venue_city) %>:</strong></dt>
+		  <dd><%= @event.venue_city %></dd>
+		  <dt><strong><%= model_class.human_attribute_name(:venue_state_province) %>:</strong></dt>
+		  <dd><%= @event.venue_state_province %></dd>
+		  <dt><strong><%= model_class.human_attribute_name(:venue_country) %>:</strong></dt>
+		  <dd><%= @event.venue_country %></dd>
+		  
+		</dl>
+	</div>
+</div>
 
+<hr/>
 
+<div class="well">
+	<h3>TICKET TYPES</h3>
+	<br/>
+	<div class="row-fluid">
+		
+		<div class="table-products">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Capacity</th>
+				<th>Price</th>
+				<th></th>
 
-<div class="form-actions">
- 	<%= link_to t('.back', :default => t("helpers.links.back")),
-		              events_path, :class => 'btn-flat inverse'  %>
-		  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-		              edit_event_path(@event), :class => 'btn-flat default' %>
+			</tr>
+		</thead>
+		<tbody>
+			<% @ticket_types.each do |i| %>
+			<tr>
+				<td><strong>
+				<%= i.name.upcase %>
+				</strong></td>
+				<td><%= i.capacity  %></td>
+				<td><%= number_to_currency(i.price) %></td>
+
+				<td>
+				<ul class="actions">
+
+					<li>
+						<%= link_to edit_ticket_type_path(i) do %> 
+							<i class="table-edit"></i>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to image_tag("/img/ico-table-delete.png"),
+                      			ticket_type_path(i), :method => :delete, 
+                      			:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } 
+                      			  %>
+                      			
+						
+					</li>
+				</ul></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
+</div>
+
+		<a href="#newModal" role="button" class="btn-flat gray" data-toggle="modal">+ NEW TICKET TYPE</a>
+	</div>
 	
 	
-		</div>	
+	
+	
+</div>
+
+
+
+ 
+<%= render 'ticket_type_form' %>
+
+
+
+
+
+

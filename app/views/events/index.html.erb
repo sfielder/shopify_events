@@ -1,57 +1,58 @@
 <%- model_class = Event -%>
 
-
 <div class="row-fluid header">
-                    <h3>Events</h3>
-                    <div class="span10 pull-right">
-                        
-						<%= link_to "+ NEW EVENT", new_event_path(), :class => 'btn-flat gray pull-right' %>
-                        
-                    </div>
-                </div>
+	<h3>Events</h3>
+	<div class="span10 pull-right">
 
+		<%= link_to "+ NEW EVENT", new_event_path(), :class => 'btn-flat gray pull-right' %>
+
+	</div>
+</div>
 
 <%- flash.each do |k, v| %>
-  				<div id="<%= k %>" class="alert alert-<%= k %>"><%= v %></div>
-  			<% end %>
-
-
+<div id="<%= k %>" class="alert alert-<%= k %>">
+	<%= v %>
+</div>
+<% end %>
 
 <div class="table-products">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:start_datetime) %></th>
-      <th><%= model_class.human_attribute_name(:end_datetime) %></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |i| %>
-      <tr>
-        <td><%= i.title %></td>
-        <td><%= i.start_datetime  %></td>
-        <td><%= i.end_datetime %></td>
-        <td><%= link_to 'Show', event_path(i) %></td>
-    	<td><%= link_to 'Edit', edit_event_path(i) %></td>
-    	<td><%= link_to 'Destroy', i, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th><%= model_class.human_attribute_name(:title) %></th>
+				<th><%= model_class.human_attribute_name(:start_datetime) %></th>
+				<th><%= model_class.human_attribute_name(:end_datetime) %></th>
+				<th></th>
 
+			</tr>
+		</thead>
+		<tbody>
+			<% @events.each do |i| %>
+			<tr>
+				<td><strong><%= link_to event_path(i) do %>
+				<%= i.title.upcase %>
+				<% end %></strong></td>
+				<td><%= i.start_datetime  %></td>
+				<td><%= i.end_datetime %></td>
 
+				<td>
+				<ul class="actions">
 
+					<li>
+						<%= link_to edit_event_path(i) do %> 
+							<i class="table-edit"></i>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to edit_event_path(i) do %>
+						<i class="table-delete"></i>
+						<% end %>
+					</li>
+				</ul></td>
 
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 
-
-
-
-
-
-
-
+</div>
