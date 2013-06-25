@@ -1,0 +1,135 @@
+
+
+<div class="container-fluid">
+            <div id="pad-wrapper" class="user-profile">
+                <!-- header -->
+                <div class="row-fluid header">
+                    <div class="span8">
+                        <img src="/img/contact-img2.png" class="avatar img-circle">
+                        <h3 class="name"><%= @attendee.first_name %> <%= @attendee.last_name %></h3>
+                        <span class="area"><%= @attendee.email %></span>
+                    </div>
+                    
+                     <%= link_to t('.edit', :default => t("helpers.links.edit")),
+		              edit_attendee_path(@attendee), :class => 'btn-flat default pull-right' %>
+                </div>
+
+                <div class="row-fluid profile">
+                    <!-- bio, new note & orders column -->
+                    <div class="span9 bio">
+                        <div class="profile-box">
+                           
+                            <h6>Recent orders</h6>
+                            <br>
+                            <!-- recent orders table -->
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="span2">
+                                            Order ID
+                                        </th>
+                                        <th class="span3">
+                                            <span class="line"></span>
+                                            Date
+                                        </th>
+                                        <th class="span3">
+                                            <span class="line"></span>
+                                            Items
+                                        </th>
+                                        <th class="span3">
+                                            <span class="line"></span>
+                                            Total amount
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- row -->
+                                    <tr class="first">
+                                        <td>
+                                            <a href="#">#459</a>
+                                        </td>
+                                        <td>
+                                            Jan 03, 2013
+                                        </td>
+                                        <td>
+                                            3
+                                        </td>
+                                        <td>
+                                            $ 3,500.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">#510</a>
+                                        </td>
+                                        <td>
+                                            Feb 22, 2013
+                                        </td>
+                                        <td>
+                                            5
+                                        </td>
+                                        <td>
+                                            $ 800.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">#618</a>
+                                        </td>
+                                        <td>
+                                            Jan 03, 2013
+                                        </td>
+                                        <td>
+                                            8
+                                        </td>
+                                        <td>
+                                            $ 3,499.99
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- new comment form -->
+                            <div class="span12 section comment">
+                                <h6>Add a quick note</h6>
+                                <p>Add a note about this user to keep a history of your interactions.</p>
+                                <textarea></textarea>
+                                <a href="#">Attach files</a>
+                                <div class="span12 submit-box pull-right">
+                                    <input type="submit" class="btn-glow primary" value="Add Note">
+                                    <span>OR</span>
+                                    <input type="reset" value="Cancel" class="reset">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- side address column -->
+                    <div class="span3 address pull-right">
+                        <h6>Address</h6>
+                        <iframe width="300" height="133" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com.mx/?ie=UTF8&amp;t=m&amp;ll=19.715081,-155.071421&amp;spn=0.010746,0.025749&amp;z=14&amp;output=embed"></iframe>
+                        <ul>
+                            <li><%= @attendee.street_address %></li>
+                            <li><%= @attendee.secondary_street_address %></li>
+                            <li><%= @attendee.city %>, <%= @attendee.state_province %>. <%= @attendee.country %>,</li>
+                            <li class="ico-li">
+                                <i class="ico-phone"></i>
+                                <%= @attendee.phone %>
+                            </li>
+                             <li class="ico-li">
+                                <i class="ico-mail"></i>
+                                <a href="#"><%= @attendee.email %></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<% content_for :styles do %>
+
+	<%= stylesheet_link_tag "/css/user-profile.css"%>
+<% end %>
+
+

@@ -4996,6 +4996,14 @@ input[type="submit"].btn.btn-mini {
   border-left-width: 0;
 }
 
+.pagination ul > li > a.active{
+	color: #3b9ff3;
+}
+.pagination ul > li.active{
+	color: #3b9ff3;
+}
+
+
 .pagination ul > li > a:hover,
 .pagination ul > li > a:focus,
 .pagination ul > .active > a,
@@ -5005,7 +5013,7 @@ input[type="submit"].btn.btn-mini {
 
 .pagination ul > .active > a,
 .pagination ul > .active > span {
-  color: #999999;
+  color: #3b9ff3;
   cursor: default;
 }
 

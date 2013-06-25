@@ -1,0 +1,33 @@
+
+
+<%= simple_form_for @attendee, :html => { :class => 'form-vertical well' } do |f| %>
+  
+	<div class="row-fluid">
+	  <div class="span5">
+		  <h3>ATTENDEE DETAILS</h3><br/>
+		    <%= f.input :first_name %>
+		    <%= f.input :last_name %>
+		    <%= f.input :email %>
+		    <%= f.input :phone %>
+		  
+		</div>
+	
+	<div class="span5">
+	  	<h3>ADDRESS DETAILS</h3> <br/>
+	  	<%= f.input :street_address %>
+	  	<%= f.input :secondary_street_address %>
+	  	<%= f.input :city %>
+	  	<%= f.input :state_province %>
+	  	<%= f.input :country %> 
+  	
+  	</div>
+	</div>
+	  <div class="form-actions">
+	    <%= f.button :submit, :class => 'btn-flat primary' %>
+    	<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                attendee_path(@attendee), :class => 'btn-flat inverse' %>
+	  </div>
+	  
+	  
+	  
+<% end %>

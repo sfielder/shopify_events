@@ -17,7 +17,6 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    @ticket_types = @event.ticket_types
     @ticket_type = TicketType.new
     
     respond_to do |format|

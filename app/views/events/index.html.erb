@@ -5,8 +5,14 @@
 	<div class="span10 pull-right">
 
 		<%= link_to "+ NEW EVENT", new_event_path(), :class => 'btn-flat gray pull-right' %>
-
 	</div>
+	
+	<div class="btn-group ">
+		<br/>
+                                <button class="glow left large">All</button>
+                                <button class="glow middle large">Pending</button>
+                                <button class="glow right large">Completed</button>
+                            </div>
 </div>
 
 <%- flash.each do |k, v| %>
@@ -15,7 +21,7 @@
 </div>
 <% end %>
 
-<div class="table-products">
+<div class="table-products well">
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -54,5 +60,15 @@
 			<% end %>
 		</tbody>
 	</table>
-
+	 <div class="pagination pull-right">
+                    <ul>
+                        <li><a href="#">‹</a></li>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">›</a></li>
+                    </ul>
+                </div>
 </div>

@@ -209,6 +209,7 @@ DEPENDENCIES
   country_select
   devise
   jquery-rails
+  kaminari
   less-rails-bootstrap
   mongoid
   mongoid-multitenancy

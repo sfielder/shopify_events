@@ -7,10 +7,13 @@ class Registration
   field :order_number, type: String
   field :quantity, type: Integer
   field :total, type: Float
+  field :status, type: String
   
   belongs_to :account
   belongs_to :event
+  belongs_to :customer
   tenant(:account)
+  
   
   has_many :attendees
   

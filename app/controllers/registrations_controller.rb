@@ -1,9 +1,13 @@
 class RegistrationsController < ApplicationController
+  
+  around_filter :shopify_session
+  
   # GET /registrations
   # GET /registrations.json
   def index
-    @registrations = Registration.all
-
+    @registrations = Registration.where(event: params[:id]).page params[:page]
+    @event = Event.find(params[:id])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @registrations }

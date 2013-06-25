@@ -13,11 +13,15 @@ class Event
   field :venue_state_province, type: String
   field :venue_country, type: String
   field :venue_virtual, type: Boolean
+  field :shopify_product_id, type: String
+  field :body_html, type: String 
   
   belongs_to :account
   tenant(:account)
   
   has_many :ticket_types
+  has_many :registrations
+  has_many :attendees
   
   
 end

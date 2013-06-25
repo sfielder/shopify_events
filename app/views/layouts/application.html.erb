@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="Description" content="<%= yield :metadescription %>">
     <meta name="google-site-verification" content="NAJx8YGyuk0vWYsGqRFcvC-mt4Q7MwMCf6EUlqc1o-M" />
-    <%= yield :styles %>
+    
     
     <!-- bootstrap -->
     <link href="/css/bootstrap/bootstrap.css" rel="stylesheet" />
@@ -22,7 +22,9 @@
     <link rel="stylesheet" type="text/css" href="/css/compiled/layout.css">
     <link rel="stylesheet" type="text/css" href="/css/elements.css">
     <link rel="stylesheet" type="text/css" href="/css/icons.css">
-
+	<%= yield :styles %>
+	
+	
     <!-- this page specific styles -->
     <link rel="stylesheet" href="/css/compiled/index.css" type="text/css" media="screen" />
 
@@ -75,16 +77,29 @@
             	<% end %>
             	
              </li>
-             <li class="<%= controller_name == 'integrations' ? "active" : "" %> ">
-            	<% if controller_name == 'integrations' %>
+             <!-- <li class="<%= controller_name == 'attendees' ? "active" : "" %> ">
+            	<% if controller_name == 'attendees' %>
             	<div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
                 </div>
                 <% end %>
-            	<%= link_to root_path do %>
+            	<%= link_to attendees_path do %>
             		<i class="icon-group"></i>
                     <span>Attendees</span>
+            	<% end %>
+            	
+             </li> -->
+             <li class="<%= controller_name == 'customers' ? "active" : "" %> ">
+            	<% if controller_name == 'customers' %>
+            	<div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <% end %>
+            	<%= link_to customers_path do %>
+            		<i class="icon-group"></i>
+                    <span>Customers</span>
             	<% end %>
             	
              </li>

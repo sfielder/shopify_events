@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Order number:</b>
+  <%= @registration.order_number %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @registration.quantity %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @registration.total %>
+</p>
+
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

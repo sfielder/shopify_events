@@ -1,5 +1,7 @@
 ShopifyEvents::Application.routes.draw do
   
+
+
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -18,6 +20,9 @@ ShopifyEvents::Application.routes.draw do
   
   resources :events 
   resources :ticket_types
+  resources :customers
+  resources :registrations
+  resources :attendees
 
   root :to => 'home#index'
   

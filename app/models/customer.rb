@@ -1,4 +1,4 @@
-class Attendee
+class Customer
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
@@ -13,10 +13,13 @@ class Attendee
   field :province, type: String
   field :country, type: String
   field :state, type: String
+  field :zip, type: String
+  field :shopify_id, type: String
+  field :accepts_marketing, type: Boolean
   
   belongs_to :account
-  belongs_to :registration
-  belongs_to :event
   tenant(:account)
+  
+  has_many :registrations
   
 end

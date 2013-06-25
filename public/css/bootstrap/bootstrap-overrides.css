@@ -244,7 +244,7 @@ textarea::-webkit-input-placeholder {
 .pagination ul > li:last-child > span,
 .pagination ul > li:first-child > a,
 .pagination ul > li:first-child > span{
-	font-size: 23px;
+	/*font-size: 23px;*/
 	color: #bcc6d3;
 	padding: 1px 9px 3px 9px;
 }
@@ -266,6 +266,9 @@ textarea::-webkit-input-placeholder {
 	-o-transition: background-color .1s linear;  /* Opera */
 }
 .pagination ul > li > a.active{
+	color: #3b9ff3;
+}
+.pagination ul > li.active{
 	color: #3b9ff3;
 }
 .pagination ul > li > a:hover,
