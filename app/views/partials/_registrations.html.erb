@@ -1,0 +1,61 @@
+<div class="well">
+	<h3>REGISTRATIONS</h3>
+	<br/>
+	<div class="row-fluid">
+		
+		<div class="table-products">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Order Number</th>
+				<th>Customer</th>
+				<th>Quantity</th>
+				<th>Total</th>
+				<th>Status</th>
+				<th></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% @event.registrations.take(5).each do |i| %>
+			<tr>
+				<td><strong>
+				<%= i.order_number.upcase %>
+				</strong></td>
+				<td><%= link_to customer_path(i.customer) do %>
+					<%= i.customer.first_name  %> <%= i.customer.last_name  %>
+					<% end %>
+					</td>
+				<td><%= i.quantity  %></td>
+				<td><%= number_to_currency(i.total) %></td>
+				<td><%= i.status %></td>
+				<td>
+				<!--<ul class="actions">
+
+					<li>
+						<%= link_to edit_ticket_type_path(i) do %> 
+							<i class="table-edit"></i>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to image_tag("/img/ico-table-delete.png"),
+                      			ticket_type_path(i), :method => :delete, 
+                      			:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } 
+                      			  %>
+                      			
+						
+					</li>
+				</ul> --></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
+<%= link_to "VIEW ALL", registrations_path(:id => @event), :class => "btn-flat default" %>
+
+</div>
+
+		
+	</div>

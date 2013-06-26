@@ -7,14 +7,40 @@ class TicketType
   field :name, type: String
   field :capacity, type: Integer
   field :price, type: Float
-  field :description, type: String
   field :shopify_product_variant_id, type: String
-  field :shopify_inventory_management, type: String # "shopify" default value to enforce
-  field :shopify_inventory_policy, type: String # "deny" default value to enforce max limits
   
   belongs_to :account
   belongs_to :event
   tenant(:account)
   
+  before_save :create_shopify_product_variant
+  before_update :update_shopify_product_variant
+  
+  private
+  
+  def create_shopify_product_variant
+    if self.shopify_product_variant_id.nil?
+      self.shopify_product_variant_id = ShopifyAPI::Variant.create(
+        :inventory_management => 'shopify', 
+        :inventory_policy => 'deny',
+        :inventory_quantity => self.capacity, 
+        :option1 => self.name,
+        :price => self.price,
+        :sku => self.id,
+        :product_id => self.event.shopify_product_id, 
+        :title => self.name).id
+    end
+    
+  end
+  
+  def update_shopify_product_variant
+    if self.changed?
+        variant = ShopifyAPI::Variant.find(self.shopify_product_variant_id)
+        variant.price = self.price
+        variant.inventory_quantity = self.capacity
+        variant.title = self.name
+        variant.save
+    end
+  end
   
 end

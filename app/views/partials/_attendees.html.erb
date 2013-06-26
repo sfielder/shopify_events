@@ -1,0 +1,37 @@
+<div class="well">
+	<h3>ATTENDEES</h3>
+	<br/>
+	<div class="row-fluid">
+		
+		<div class="table-products">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<% @event.attendees.take(5).each do |i| %>
+			<tr>
+				<td><strong>
+				<%= i.first_name  %> <%= i.last_name  %>
+				</strong></td>
+				<td><%= i.email  %>
+					</td>
+				<td><%= number_to_phone(i.phone)  %></td>
+				
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
+</div>
+<%= link_to "VIEW ALL", attendees_path(:id => @event), :class => "btn-flat default" %>
+
+
+		
+	</div>

@@ -5,9 +5,8 @@
                 <!-- header -->
                 <div class="row-fluid header">
                     <div class="span8">
-                        <img src="/img/contact-img2.png" class="avatar img-circle">
+                        <img src="/images/no-gravatar.png" class="avatar img-circle">
                         <h3 class="name"><%= @customer.first_name %> <%= @customer.last_name %></h3>
-                        <span class="area"><%= @customer.email %></span>
                     </div>
                     
                      <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -19,7 +18,7 @@
                     <div class="span9 bio">
                         <div class="profile-box">
                            
-                            <h6>Recent orders</h6>
+                            <h6>Event Registrations</h6>
                             <br>
                             <!-- recent orders table -->
                             <table class="table table-hover">
@@ -83,6 +82,7 @@
                                 </div>
                             </div>-->
                         </div>
+                        
                     </div>
 
                     <!-- side address column -->

@@ -1,4 +1,7 @@
 class Event
+  
+  require 'chronic'
+  
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
@@ -6,7 +9,9 @@ class Event
   
   field :title, type: String
   field :start_datetime, type: String
+  field :starttime, type: Time
   field :end_datetime, type: String
+  field :endtime, type: Time
   field :venue_street_address, type: String
   field :venue_secondary_address, type: String
   field :venue_city, type: String
@@ -22,6 +27,44 @@ class Event
   has_many :ticket_types
   has_many :registrations
   has_many :attendees
+  
+  scope :upcoming, where(:starttime.gte => Time.now) 
+  scope :previous, where(:starttime.lte => Time.now) 
+  
+  before_save :setdates
+  before_save :create_shopify_product
+  before_update :update_shopify_product
+  
+  private
+  
+  def setdates
+    self.starttime = Chronic.parse(self.start_datetime)
+    self.endtime = Chronic.parse(self.end_datetime)
+  end
+  
+  
+  def create_shopify_product
+    if self.shopify_product_id.nil?
+        self.shopify_product_id = ShopifyAPI::Product.create(
+              :product_type => "Event",
+              :vendor => "Shopify EVENTS", 
+              :title => self.title).id
+    end
+    
+  end
+  
+  def update_shopify_product
+    if self.changed?
+        product = ShopifyAPI::Product.find(self.shopify_product_id)
+        product.title = self.title
+        product.body_html = self.body_html
+        product.save
+    end
+    
+  end
+  
+  
+  
   
   
 end

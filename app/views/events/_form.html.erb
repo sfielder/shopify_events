@@ -1,6 +1,6 @@
 
 <br/>
-<%= simple_form_for @event, :html => { :class => 'form-vertical well' } do |c| %>
+<%= simple_form_for @event, :html => { :class => 'form-horizontal well' } do |c| %>
   
  <div class="row-fluid">
   <div class="span5">
@@ -20,7 +20,13 @@
 	  	<%= c.input :venue_state_province, :required => true %>
 	  	<%= c.input :venue_country, :required => true %> 
   	</div>
-  </div>	
+  </div>
+  <div class="row-fluid">
+  	<div class="span12 section">
+  	<h3>EVENT DESCRIPTION</h3> <br/>
+	  	<%= c.input :body_html, :as => :text, :label => false, :input_html => { :cols => 900, :rows => 10, :style => "width: 600px;" } %>
+	  	</div>
+  	</div>	
   <div class="form-actions">
     <%= c.button :submit, :class => 'btn-flat primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
@@ -80,13 +86,30 @@
 	    });
 	});
 	
-	
+
 </script>
+ 
+ <script src="/bootstrap-wysihtml5-0.0.2/libs/js/wysihtml5-0.3.0_rc2.min.js"></script>
+ <script src="/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js"></script>
+ 
+ <script>
+ $('#event_body_html').wysihtml5({
+	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+	"emphasis": true, //Italics, bold, etc. Default true
+	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+	"html": true, //Button which allows you to edit the generated HTML. Default false
+	"link": true, //Button to insert a link. Default true
+	"image": true, //Button to insert an image. Default true,
+	"color": false //Button to change color of font  
+});
+ </script>
+ 
+ 
  
 <% end %>
 
+<%= content_for :styles do %>
 
-
-
-
+<link rel="stylesheet" type="text/css" href="/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css"></link>
+<% end %>
 

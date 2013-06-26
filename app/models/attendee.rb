@@ -12,7 +12,7 @@ class Attendee
   field :address2, type: String
   field :province, type: String
   field :country, type: String
-  field :state, type: String
+  field :zip, type: String
   
   belongs_to :account
   belongs_to :registration

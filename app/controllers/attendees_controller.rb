@@ -5,8 +5,9 @@ class AttendeesController < ApplicationController
   # GET /attendees
   # GET /attendees.json
   def index
-    @attendees = Attendee.all
-
+    @attendees = Attendee.where(event: params[:id]).page params[:page]
+    @event = Event.find(params[:id])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @attendees }

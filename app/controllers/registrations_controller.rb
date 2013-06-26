@@ -5,6 +5,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
+    
     @registrations = Registration.where(event: params[:id]).page params[:page]
     @event = Event.find(params[:id])
     

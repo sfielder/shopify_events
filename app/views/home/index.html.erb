@@ -7,22 +7,22 @@
                     
                     <div class="span4 stat">
                         <div class="data">
-                            <span class="number">40</span>
-                            Registrations
+                            <span class="number"><%= Event.count %></span>
+                            Active Events
                         </div>
                         <span class="date">Today</span>
                     </div>
                     <div class="span4 stat">
                         <div class="data">
-                            <span class="number">$2,900</span>
-                            event revenue
+                            <span class="number"><%= number_to_currency(Registration.sum(:total))%></span>
+                            revenue
                         </div>
-                        <span class="date">This month</span>
+                        <span class="date">This year</span>
                     </div>
                     <div class="span4 stat last">
                         <div class="data">
-                            <span class="number">50</span>
-                            events
+                            <span class="number"><%= Attendee.count %></span>
+                            attendees
                         </div>
                         <span class="date">last 30 days</span>
                     </div>
@@ -30,6 +30,12 @@
             </div>
             <!-- end upper main stats -->
 <% end %>
+
+
+
+
+
+
 
   <div class="span8 ">
     <h2>Recent orders</h2>
@@ -75,6 +81,8 @@
       
     <% end %>
     
+    <div id="myfirstchart" style="height: 250px;"></div>
+
     <br/>
     
     <h2>New Products</h2>
@@ -139,3 +147,36 @@
     </div> <!-- accordion -->
   </div> <!-- span8 / right-column -->
 </div>
+
+
+<%= content_for :jsfooter do %>
+
+<%= render 'partials/morris_js' %>
+<script>
+	
+	new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+    { year: '2008', value: 20 },
+    { year: '2009', value: 10 },
+    { year: '2010', value: 5 },
+    { year: '2011', value: 5 },
+    { year: '2012', value: 20 }
+  ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'year',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['value'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Value']
+});
+</script>
+
+
+<% end %>
+
+

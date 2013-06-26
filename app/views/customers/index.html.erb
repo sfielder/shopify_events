@@ -1,11 +1,11 @@
 	<div class="row-fluid header">
                     <h3>Customers</h3>
-                    <div class="span10 pull-right">
+                     <!--<div class="span10 pull-right">
                         <input type="text" class="span5 search" placeholder="Type a user's name...">
                         
-                        <!-- custom popup filter -->
+                        custom popup filter -->
                         <!-- styles are located in css/elements.css -->
-                        <!-- script that enables this dropdown is located in js/theme.js -->
+                        <!-- script that enables this dropdown is located in js/theme.js 
                         <div class="ui-dropdown">
                             <div class="head" data-toggle="tooltip" title="" data-original-title="Click me!">
                                 Filter Customers
@@ -43,7 +43,7 @@
                         </div>
 
                         
-                    </div>
+                    </div>-->
                 </div>
 
                 <!-- Users table -->
@@ -52,16 +52,14 @@
                         <thead>
                             <tr>
                                 <th class="span4 sortable">
-                                    Name
+                                    Last Name
                                 </th>
-                                
+                                <th class="span4 sortable">
+                                    First Name
+                                </th>
                                 <th class="span3 sortable">
                                     <span class="line"></span>Email
                                 </th>
-                                <th class="span3 sortable">
-                                    <span class="line"></span>Phone
-                                </th>
-                                
                             </tr>
                         </thead>
                         <tbody>
@@ -69,28 +67,22 @@
                         <% @customers.each do |customer| %>
                         <tr class="first">
                             <td><%= link_to customer_path(customer), :class => "name" do %>
-                            		<%= customer.first_name %> <%= customer.last_name %>
+                            		<%= customer.last_name %>
+                            	<% end %>
+                            </td>
+                            <td><%= link_to customer_path(customer), :class => "name" do %>
+                            		<%= customer.first_name %>
                             	<% end %>
                             </td>
                             <td><%= customer.email %></td>
-						    <td><%= number_to_phone(customer.phone) %></td>
+						    
 						</tr>
                         <% end %>
                         
                         </tbody>
                     </table>
                 </div>
-                <div class="pagination pull-right">
-                    <ul>
-                        <li><a href="#">‹</a></li>
-                        <li><a class="active" href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">›</a></li>
-                    </ul>
-                </div>
+                <%= paginate @customers %>
                 <!-- end users table -->
             
 

@@ -18,6 +18,7 @@ gem 'chronic'
 
 gem 'kaminari'
 
+
 #RAILS ADMIN
 gem 'rails_admin'
 

@@ -5,9 +5,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
-  
-    respond_to do |format|
+    
+    
+      @events_previous = Event.previous.order_by(:starttime.asc)
+      @events_upcoming = Event.upcoming.order_by(:starttime.asc)
+      @events = Event.all.order_by(:starttime.asc)
+      
+      puts "################## #{@events_previous.count}"
+      puts "################## #{@events_upcoming.count}"
+      puts "################## #{@events.count}"
+      
+      respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
     end
@@ -29,7 +37,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
@@ -46,7 +54,7 @@ class EventsController < ApplicationController
   def create
     puts "****************************PARAMS #{params}"
     @event = Event.new(params[:event])
-
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
