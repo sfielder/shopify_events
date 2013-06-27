@@ -1,4 +1,4 @@
-class Registration
+class Order
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
@@ -8,12 +8,14 @@ class Registration
   field :quantity, type: Integer
   field :total, type: Float
   field :status, type: String
+  field :shopify_id, type: String
   
   belongs_to :account
   belongs_to :event
   belongs_to :customer
   tenant(:account)
   
+  has_one :address, :as => :billing_address
   
   has_many :attendees
   

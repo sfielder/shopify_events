@@ -12,7 +12,7 @@ class Customer
   belongs_to :account
   tenant(:account)
   
-  has_many :registrations
+  has_many :orders
   
   
   

@@ -1,4 +1,4 @@
-class TicketType
+class Variant
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes

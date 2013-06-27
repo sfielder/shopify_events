@@ -15,7 +15,7 @@ class Attendee
   field :zip, type: String
   
   belongs_to :account
-  belongs_to :registration
+  belongs_to :order
   belongs_to :event
   tenant(:account)
   

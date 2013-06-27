@@ -88,13 +88,15 @@
 <div class="row-fluid ">
 	<div class="span12 well">
 	<h3>EVENT DESCRIPTION</h3> <br/>
-	<%= @event.body_html.html_safe %>
+	<% if !@event.body_html.nil? %>
+		<%= @event.body_html.html_safe %>
+	<% end %>
 	</div>
 	</div>
 
-<%= render 'partials/ticket_types'%>
+<%= render 'partials/variants'%>
 
-<%= render 'partials/registrations'%>
+<%= render 'partials/orders'%>
 
 <%= render 'partials/attendees'%>
 

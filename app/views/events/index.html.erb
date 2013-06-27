@@ -1,13 +1,11 @@
 <%- model_class = Event -%>
 
-<div class="row-fluid header">
-	<h3>Events</h3>
+<h3>Events</h3>
 	<div class="span10 pull-right">
 
-		<%= link_to "+ NEW EVENT", new_event_path(), :class => 'btn-flat gray pull-right' %>
+		<%= link_to "+ NEW EVENT", new_event_path(), :class => 'btn-glow success pull-right' %>
 	</div>
 	
-	</div>
 	
 
 	<%- flash.each do |k, v| %>
@@ -17,7 +15,7 @@
 	<% end %>
 
 	
-	 <div class="row-fluid section">
+	 <div class="row-fluid ">
      
 	 <ul class="nav nav-tabs" id="myTab">
 	  <li><a href="#upcoming" data-toggle="tab">Upcoming</a></li>

@@ -19,9 +19,9 @@ ShopifyEvents::Application.routes.draw do
   end
   
   resources :events 
-  resources :ticket_types
+  resources :variants
   resources :customers
-  resources :registrations
+  resources :orders
   resources :attendees
 
   root :to => 'home#index'

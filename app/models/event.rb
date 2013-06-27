@@ -24,8 +24,8 @@ class Event
   belongs_to :account
   tenant(:account)
   
-  has_many :ticket_types
-  has_many :registrations
+  has_many :variants
+  has_many :orders
   has_many :attendees
   
   scope :upcoming, where(:starttime.gte => Time.now) 

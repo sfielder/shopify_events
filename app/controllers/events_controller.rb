@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    @ticket_type = TicketType.new
+    @ticket_type = Variant.new
     
     respond_to do |format|
       format.html # show.html.erb

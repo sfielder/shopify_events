@@ -1,11 +1,11 @@
 <div class="well">
 	<h3>TICKET TYPES</h3>
 	<br/>
-	
+	<% if @event.variants.nil? %>
 	<div class="row-fluid">
 		<div id="bar-example" ></div>
 		</div>
-	
+	<% end %>
 	<div class="row-fluid">
 
 		<div class="table-products">
@@ -20,7 +20,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @event.ticket_types.each do |i| %>
+					<% @event.variants.each do |i| %>
 					<tr>
 						<td><strong> <%= i.name.upcase %> </strong></td>
 						<td><%= i.capacity  %></td>
@@ -65,7 +65,7 @@
 	Morris.Bar({
   element: 'bar-example',
   data: [
-  <% @event.ticket_types.each do |i| %>
+  <% @event.variants.each do |i| %>
     { y: '<%= i.name %>', a: <%= i.capacity %>, b: 90 },
     <% end %>
   ],

@@ -17,7 +17,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @event.registrations.take(5).each do |i| %>
+			<% @event.orders.take(5).each do |i| %>
 			<tr>
 				<td><strong>
 				<%= i.order_number.upcase %>
@@ -53,7 +53,7 @@
 	</table>
 
 </div>
-<%= link_to "VIEW ALL", registrations_path(:id => @event), :class => "btn-flat default" %>
+<%= link_to "VIEW ALL", orders_path(:id => @event), :class => "btn-flat default" %>
 
 </div>
 
