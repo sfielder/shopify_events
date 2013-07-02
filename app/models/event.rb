@@ -38,8 +38,7 @@ class Event
   private
   
   def setdates
-    self.starttime = Chronic.parse(self.start_datetime)
-    self.endtime = Chronic.parse(self.end_datetime)
+    
   end
   
   
