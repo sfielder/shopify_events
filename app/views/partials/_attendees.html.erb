@@ -2,7 +2,14 @@
 	<h3>ATTENDEES</h3>
 	<br/>
 	<div class="row-fluid">
-		
+		<% if @event.attendees.blank? %>
+			<table class="table table-striped">
+				<tr>
+					<td><em>There are no event attendees for the <%= @event.title %>.</em></td>
+				</tr>
+				
+			</table>
+		<% else %>	
 		<div class="table-products">
 	<table class="table table-hover">
 		<thead>
@@ -29,8 +36,10 @@
 	</table>
 
 </div>
-</div>
 <%= link_to "VIEW ALL", attendees_path(:id => @event), :class => "btn-flat default" %>
+
+<% end %>
+</div>
 
 
 		

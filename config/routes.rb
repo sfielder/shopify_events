@@ -2,6 +2,8 @@ ShopifyEvents::Application.routes.draw do
   
 
 
+  get "webhook/product_updated"
+
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -23,7 +25,12 @@ ShopifyEvents::Application.routes.draw do
   resources :customers
   resources :orders
   resources :attendees
-
+  
+  
+  #webhooks
+  match 'webhooks/events/update' => 'webhook#event_updated'
+  
+  
   root :to => 'home#index'
   
 

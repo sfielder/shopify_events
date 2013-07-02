@@ -15,4 +15,7 @@ class Address
   field :province, type: String
   field :province_code, type: String
   field :zip, type: String
+  
+  belongs_to :addressable, polymorphic: true
+  
 end

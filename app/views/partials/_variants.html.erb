@@ -1,11 +1,11 @@
 <div class="well">
 	<h3>TICKET TYPES</h3>
 	<br/>
-	<% if @event.variants.nil? %>
+	<% if @event.variants? %>
 	<div class="row-fluid">
 		<div id="bar-example" ></div>
 		</div>
-	<% end %>
+	
 	<div class="row-fluid">
 
 		<div class="table-products">
@@ -15,6 +15,7 @@
 						<th>Name</th>
 						<th>Capacity</th>
 						<th>Price</th>
+						<th>Status</th>
 						<th></th>
 
 					</tr>
@@ -25,18 +26,27 @@
 						<td><strong> <%= i.name.upcase %> </strong></td>
 						<td><%= i.capacity  %></td>
 						<td><%= number_to_currency(i.price) %></td>
-
+						<td>
+							
+							<% if i.active %>
+				          		<span class="label label-success">Active</span>
+				          <% else %>
+				          		<span class="label label-info">Inactive</span>
+				          <% end %>
+							
+							
+						</td>
 						<td>
 						<ul class="actions">
 
 							<li>
-								<%= link_to edit_ticket_type_path(i) do %>
+								<%= link_to edit_variant_path(i) do %>
 								<i class="table-edit"></i>
 								<% end %>
 							</li>
 							<li>
 								<%= link_to image_tag("/img/ico-table-delete.png"),
-								ticket_type_path(i), :method => :delete,
+								variant_path(i), :method => :delete,
 								:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
 %>
 
@@ -51,17 +61,25 @@
 		</div>
 	</div>
 
-	<a href="#newModal" role="button" class="btn-flat gray" data-toggle="modal">+ NEW TICKET TYPE</a>
 	
+	<% else %>
+	<table class="table table-striped">
+				<tr>
+					<td><em>There are no ticket types for the <%= @event.title %>.</em></td>
+				</tr>
+				
+			</table>
+	<% end %>
+	<a href="#newModal" role="button" class="btn-flat gray" data-toggle="modal">+ NEW TICKET TYPE</a>
 </div>
 
-<%= render 'ticket_type_form' %>
+<%= render 'variant_form' %>
 
 
 <%= content_for :jsfooter do %>
 		<%= render 'partials/morris_js' %>
 <script>
-	
+<% if @event.variants? %>	
 	Morris.Bar({
   element: 'bar-example',
   data: [
@@ -73,5 +91,6 @@
   ykeys: ['a', 'b'],
   labels: ['Capacity', 'Actual Attendance']
 });
+<% end %>
 </script>
 <% end %>

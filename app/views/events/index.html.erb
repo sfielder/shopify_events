@@ -27,6 +27,14 @@
 	<div class="tab-content">
 		<div class="tab-pane" id="upcoming">
 			<div class="table-products well">
+				<% if @events_upcoming.blank? %>
+			<table class="table table-striped">
+				<tr>
+					<td><em>There are no upcoming events.</em></td>
+				</tr>
+				
+			</table>
+		<% else %>	
 		<table class="table table-hover">
 		<thead>
 			<tr>
@@ -65,11 +73,19 @@
 			<% end %>
 		</tbody>
 	</table>
-	 
+	 <% end %>
 		</div>
 	 </div>
 		<div class="tab-pane" id="previous">
 			<div class="table-products well">
+				<% if @events_previous.blank? %>
+			<table class="table table-striped">
+				<tr>
+					<td><em>There are no previous events.</em></td>
+				</tr>
+				
+			</table>
+		<% else %>	
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -108,12 +124,20 @@
 			<% end %>
 		</tbody>
 	</table>
-	 
+	 <% end %>
 		</div>
 	 </div>
 	  <div class="tab-pane" id="all">
 	  	
 	  	<div class="table-products well">
+	  		<% if @events.blank? %>
+			<table class="table table-striped">
+				<tr>
+					<td><em>There are no events.</em></td>
+				</tr>
+				
+			</table>
+		<% else %>	
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -152,7 +176,7 @@
 			<% end %>
 		</tbody>
 	</table>
-	 
+	 <% end %>
 		</div>
 	  	
 	  	

@@ -27,7 +27,8 @@
   	<h3>EVENT DESCRIPTION</h3> <br/>
 	  	<%= c.input :body_html, :as => :text, :label => false, :input_html => { :cols => 900, :rows => 10, :style => "width: 600px;" } %>
 	  	</div>
-  	</div>	
+  	</div>
+  		
   <div class="form-actions">
     <%= c.button :submit, :class => 'btn-flat primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
@@ -38,6 +39,8 @@
   
 
 <% end %>
+
+
 
 <% content_for :jsfooter do %>
 
@@ -105,12 +108,14 @@
 });
  </script>
  
- 
- 
+
+	
+	
 <% end %>
 
 <%= content_for :styles do %>
 
 <link rel="stylesheet" type="text/css" href="/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css"></link>
+
 <% end %>
 

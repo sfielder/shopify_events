@@ -45,7 +45,7 @@ class VariantsController < ApplicationController
   def create
     
     puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ PARAMS: #{params}"
-    @variant = Variant.new(params[:ticket_type])
+    @variant = Variant.new(params[:variant])
 
     respond_to do |format|
       if @variant.save
@@ -64,7 +64,7 @@ class VariantsController < ApplicationController
     @variant = Variant.find(params[:id])
 
     respond_to do |format|
-      if @variant.update_attributes(params[:ticket_type])
+      if @variant.update_attributes(params[:variant])
         format.html { redirect_to event_path(@variant.event), notice: 'Ticket type was successfully updated.' }
         format.json { head :no_content }
       else
@@ -81,10 +81,13 @@ class VariantsController < ApplicationController
     
     @event = @variant.event
     
-    @variant.destroy
+    #@variant.destroy
+    @variant.deactivate_shopify_product_variant
+    @variant.active = false
+    @variant.save
 
     respond_to do |format|
-      format.html { redirect_to event_path(@variant.event), notice: 'Ticket type was successfully deleted.' }
+      format.html { redirect_to event_path(@variant.event), notice: 'Ticket type was successfully deactivated.' }
       format.json { head :no_content }
     end
   end

@@ -13,4 +13,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap-datetimepicker
+//= require fuelux.js
 //= require_tree .

@@ -2,7 +2,14 @@
 	<h3>REGISTRATIONS</h3>
 	<br/>
 	<div class="row-fluid">
-		
+		<% if @orders.blank? %>
+			<table class="table table-striped">
+				<tr>
+					<td><em>There are no event registrations for the <%= @event.title %>.</em></td>
+				</tr>
+				
+			</table>
+		<% else %>		
 		<div class="table-products">
 	<table class="table table-hover">
 		<thead>
@@ -54,7 +61,7 @@
 
 </div>
 <%= link_to "VIEW ALL", orders_path(:id => @event), :class => "btn-flat default" %>
-
+<% end %>
 </div>
 
 		

@@ -8,6 +8,7 @@ class Variant
   field :capacity, type: Integer
   field :price, type: Float
   field :shopify_product_variant_id, type: String
+  field :active, type: Boolean
   
   belongs_to :account
   belongs_to :event
@@ -16,10 +17,17 @@ class Variant
   before_save :create_shopify_product_variant
   before_update :update_shopify_product_variant
   
-  private
+  def deactivate_shopify_product_variant
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ self.active #{self.active}"
+    variant = ShopifyAPI::Variant.find(self.shopify_product_variant_id)
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ variant #{variant}"
+    variant.inventory_quantity = 0
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ VARIANT SAVE TO YAML #{variant.save}"
+   end
   
   def create_shopify_product_variant
     if self.shopify_product_variant_id.nil?
+      
       self.shopify_product_variant_id = ShopifyAPI::Variant.create(
         :inventory_management => 'shopify', 
         :inventory_policy => 'deny',
@@ -29,6 +37,7 @@ class Variant
         :sku => self.id,
         :product_id => self.event.shopify_product_id, 
         :title => self.name).id
+       self.active = true 
     end
     
   end
@@ -42,5 +51,7 @@ class Variant
         variant.save
     end
   end
+  
+  
   
 end
