@@ -14,7 +14,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'bootstrap-datetimepicker-rails'
 
-gem 'chronic'
+gem 'aaronh-chronic'
 
 gem 'kaminari'
 
