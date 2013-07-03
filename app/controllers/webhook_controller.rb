@@ -15,7 +15,7 @@ class WebhookController < ApplicationController
     if event
       whevent = WebhookEvent.new(:event_type => "event update")
       whevent.save
-      event.name = data["title"]
+      event.title = data["title"]
       event.webhook_events << whevent
       event.save
     end
