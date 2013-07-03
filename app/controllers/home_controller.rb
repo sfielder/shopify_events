@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     #@orders   = ShopifyAPI::Order.find(:all, :params => {:limit => 5, :order => "created_at DESC" })
     @orders   = Order.all.limit(5).order_by(:created_at.asc)
     
-    #puts "###################################### #{ShopifyAPI::Webhook.create(:address => "http://postcatcher.in/catchers/51d084f5249f160200001195", :format => 'json', :topic => 'app/uninstalled').to_yaml}"
+    puts "###################################### #{ShopifyAPI::Webhook.create(:address => "http://shopify-events.herokuapp.com/#{current_account.shopify_url}", :format => 'json', :topic => 'products/update').to_yaml}"
     puts "###################################### #{ShopifyAPI::Webhook.find(:all).to_yaml}"
     
     
