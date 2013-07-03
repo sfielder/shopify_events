@@ -28,7 +28,7 @@ ShopifyEvents::Application.routes.draw do
   
   
   #webhooks
-  match ':shopname/events/update' => 'webhook#event_updated'
+  match 'webhooks/events/update' => 'webhook#event_updated'
   
   
   root :to => 'home#index'
