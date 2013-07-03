@@ -31,14 +31,35 @@ class Event
   scope :upcoming, where(:starttime.gte => Time.now) 
   scope :previous, where(:starttime.lte => Time.now) 
   
-  before_save :setdates
   before_save :create_shopify_product
   before_update :update_shopify_product
   
   private
   
-  def setdates
+  def start_datetime
+    if(starttime != nil)
+      starttime.to_s(:pretty)
+    else
+      Time.now.to_s(:pretty)
+    end
     
+  end
+  
+  def start_datetime=(start_datetime)
+    self.starttime = Chronic.parse(start_datetime)
+  end
+  
+  def end_datetime
+    if(endtime != nil)
+      endtime.to_s(:pretty)
+    else
+      Time.now.to_s(:pretty)
+    end
+    
+  end
+  
+  def end_datetime=(end_datetime)
+    self.endtime = Chronic.parse(end_datetime)
   end
   
   

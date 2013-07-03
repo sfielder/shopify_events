@@ -55,9 +55,6 @@ class EventsController < ApplicationController
     puts "****************************PARAMS #{params}"
     @event = Event.new(params[:event])
     
-    @event.starttime = Chronic.parse(params[:event]["start_datetime"])
-    @event.endtime = Chronic.parse(params["end_datetime"])
-    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
