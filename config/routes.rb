@@ -28,7 +28,21 @@ ShopifyEvents::Application.routes.draw do
   
   
   #webhooks
-  match 'webhooks/events/update' => 'webhook#event_updated'
+  
+  match 'webhooks/app/uninstalled' => 'webhook#app_uninstalled'
+  
+  match 'webhooks/shop/updated' => 'webhook#shop_updated'
+  
+  match 'webhooks/orders/partially_fulfilled' => 'webhook#orders_partially_fulfulled'
+  match 'webhooks/orders/fulfilled' => 'webhook#orders_fulfulled'
+  match 'webhooks/orders/cancelled' => 'webhook#orders_cancelled'
+  match 'webhooks/orders/paid' => 'webhook#orders_paid'
+  match 'webhooks/orders/updated' => 'webhook#orders_updated'
+  match 'webhooks/orders/delete' => 'webhook#orders_delete'
+  match 'webhooks/orders/create' => 'webhook#orders_create'
+  
+  match 'webhooks/products/update' => 'webhook#products_updated'
+  match 'webhooks/products/delete' => 'webhook#products_delete'
   
   
   root :to => 'home#index'
