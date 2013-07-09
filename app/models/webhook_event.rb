@@ -8,6 +8,7 @@ class WebhookEvent
   belongs_to :account
   belongs_to :order
   belongs_to :variant
+  belongs_to :event
   
   tenant(:account)
 end

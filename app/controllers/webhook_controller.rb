@@ -7,42 +7,51 @@ class WebhookController < ApplicationController
   def app_uninstalled
     #puts "###################################### #{ShopifyAPI::Webhook.create(:address => "http://shopify-events.herokuapp.com/webhooks/events/update", :format => 'json', :topic => 'products/update').to_yaml}"
     #ShopifyAPI::Webhook.delete("3079807")
+    data = ActiveSupport::JSON.decode(request.body.read)
+    puts "app_uninstalled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     
   end
   
   
   ############################# SHOP
   def shop_update
-  
+    data = ActiveSupport::JSON.decode(request.body.read)
+    puts "shop_update %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
   end
   
   
   ############################# ORDERS
   def orders_create
-  
+    data = ActiveSupport::JSON.decode(request.body.read)
+    puts "orders_create %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
   end
   
   
   def orders_updated
-  
+    data = ActiveSupport::JSON.decode(request.body.read)
+    puts "orders_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
   end
   
   def orders_partially_fulfilled
-  
+    data = ActiveSupport::JSON.decode(request.body.read)
+    puts "orders_partially_fulfilled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
   end
   
   def orders_paid
-  
+    data = ActiveSupport::JSON.decode(request.body.read)
+    puts "orders_paid %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
   end
   
   
   def orders_cancelled
-  
+    data = ActiveSupport::JSON.decode(request.body.read)
+    puts "orders_cancelled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
   end
   
   
   def orders_fulfilled
-  
+  data = ActiveSupport::JSON.decode(request.body.read)
+    puts "orders_fulfilled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
   end
   
   
