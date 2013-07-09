@@ -59,8 +59,9 @@ class WebhookController < ApplicationController
   ############################# PRODUCTS
   def products_updated #product_updated
     data = ActiveSupport::JSON.decode(request.body.read)
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     event = Event.where(:shopify_product_id => data["product_id"]).first
+    puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% event = " + event.to_yaml
     if event
       whevent = WebhookEvent.new(:event_type => "event update")
       whevent.save
@@ -73,6 +74,7 @@ class WebhookController < ApplicationController
 
   def products_deleted
     data = ActiveSupport::JSON.decode(request.body.read)
+    puts "products_deleted %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     product = Product.where('shopify_id = ?', data["product_id"]).first
     if product
       puts 'products shop id: ' + product.shop.id
