@@ -65,10 +65,16 @@ class WebhookController < ApplicationController
     event = Event.where(shopify_product_id: data["id"]).first
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% event = " + event.to_yaml
     if event
+    
+    puts "event is here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% = "
+    
       whevent = WebhookEvent.new(:event_type => "event update")
       whevent.save
+      
       event.title = data["title"]
       event.webhook_events << whevent
+      
+      puts "event title updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% " + event.to_yaml
       event.save
     end
       head :ok
