@@ -60,7 +60,9 @@ class WebhookController < ApplicationController
   def products_updated #product_updated
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    event = Event.where(:shopify_product_id => data["product_id"]).first
+    puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data[id] = " + data["id"]
+    
+    event = Event.where(shopify_product_id: data["id"]).first
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% event = " + event.to_yaml
     if event
       whevent = WebhookEvent.new(:event_type => "event update")
