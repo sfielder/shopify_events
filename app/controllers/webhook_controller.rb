@@ -74,7 +74,7 @@ class WebhookController < ApplicationController
       @event.title = data["title"]
       @event.webhook_events << @whevent
       
-      puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save}"
+      puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save.to_yaml}"
       
     end
       head :ok
