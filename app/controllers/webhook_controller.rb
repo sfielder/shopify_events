@@ -62,19 +62,20 @@ class WebhookController < ApplicationController
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data[id] = " + data["id"].to_s
     
-    event = Event.where(shopify_product_id: data["id"]).first
+    @event = Event.where(shopify_product_id: data["id"]).first
     
-    if event
+    if @event
     
-    puts "event is here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% = "
+    puts "event is here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% = #{@event}"
     
-      whevent = WebhookEvent.new(:event_type => "event update")
-      whevent.save
+      @whevent = WebhookEvent.new(:event_type => "event update")
+      @whevent.save
       
-      event.title = data["title"]
-      event.webhook_events << whevent
+      @event.title = data["title"]
+      @event.webhook_events << whevent
       
-      event.save
+      puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save}"
+      
     end
       head :ok
   end
