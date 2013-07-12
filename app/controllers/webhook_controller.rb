@@ -69,10 +69,11 @@ class WebhookController < ApplicationController
     puts "event is here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% = #{@event}"
     
       @whevent = WebhookEvent.new(:event_type => "event update")
+      @whevent.event = @event 
       @whevent.save
       
       @event.title = data["title"]
-      @event.webhook_events << @whevent
+      
       
       puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save!}"
       
