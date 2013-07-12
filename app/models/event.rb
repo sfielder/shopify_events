@@ -29,7 +29,6 @@ class Event
   has_many :attendees
   has_many :webhook_events
   
-  
   scope :upcoming, where(:starttime.gte => Time.now) 
   scope :previous, where(:starttime.lte => Time.now) 
   
