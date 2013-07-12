@@ -72,7 +72,7 @@ class WebhookController < ApplicationController
       @whevent.save
       
       @event.title = data["title"]
-      @event.webhook_events << whevent
+      @event.webhook_events << @whevent
       
       puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save}"
       
