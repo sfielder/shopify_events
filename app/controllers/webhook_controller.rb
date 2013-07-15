@@ -58,7 +58,7 @@ class WebhookController < ApplicationController
   
   ############################# PRODUCTS
   def products_updated #product_updated
-    data = ActiveSupport::JSON.decode(request.body.read)
+    data = params
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data[id] = " + data["id"].to_s
     
@@ -73,7 +73,6 @@ class WebhookController < ApplicationController
       @whevent.save
       
       @event.title = data["title"]
-      
       
       puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save!}"
       
