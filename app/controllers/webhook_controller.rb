@@ -1,7 +1,7 @@
 class WebhookController < ApplicationController
-
-  before_filter :verify_webhook, :except => 'verify_webhook'
+  
   skip_before_action :verify_authenticity_token
+  before_filter :verify_webhook, :except => 'verify_webhook'
   
   ############################# APP
   def app_uninstalled
