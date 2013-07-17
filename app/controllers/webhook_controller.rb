@@ -6,7 +6,7 @@ class WebhookController < ApplicationController
   def new
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% method  #{params["method"]}"
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% class  #{params["class"]}"
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% class  #{params["shopid"]}"  
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% shopid  #{params["shopid"]}"  
     
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
