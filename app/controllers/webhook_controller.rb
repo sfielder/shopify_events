@@ -3,16 +3,18 @@ class WebhookController < ApplicationController
   before_filter :verify_webhook, :except => 'verify_webhook'
   
   ############################# APP
-  def new
+  def new_webhook
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% method  #{params["method"]}"
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% class  #{params["class"]}"
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% shopid  #{params["shopid"]}"  
     
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    
-    wh = WebhookEvent.new(:class => params["class"], :method => params["method"], :shop_id => params["shopid"], :body => data)
-    wh.save!
+    @wh = Event.new
+    puts "################# #{@wh}"
+    #@wh.class = params["class"]
+    #@wh.method = params["method"]
+    #@wh.shop = params["shopid"]
+    #@wh.body = params
+    #@wh.save!
     
     head :ok
   end
