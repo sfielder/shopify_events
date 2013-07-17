@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Method:</b>
+  <%= @webhook_event.method %>
+</p>
+
+<p>
+  <b>Class:</b>
+  <%= @webhook_event.class %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @webhook_event.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_webhook_event_path(@webhook_event) %> |
+<%= link_to 'Back', webhook_events_path %>

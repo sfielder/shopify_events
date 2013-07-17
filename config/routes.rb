@@ -1,6 +1,9 @@
 ShopifyEvents::Application.routes.draw do
   
 
+  resources :webhook_events
+
+
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -24,9 +27,10 @@ ShopifyEvents::Application.routes.draw do
   resources :orders
   resources :attendees
   
+  resources :webhook_events
   
   #webhooks
-  match "webhooks/:class/:method/:shopid", :to => "webhook#new_webhook"
+  #match ":class/:method/:shopid/webhook.json", :to => "webhook_events#create"
   
   root :to => 'home#index'
   

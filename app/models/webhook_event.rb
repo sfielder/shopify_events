@@ -1,5 +1,4 @@
-class Event
-
+class WebhookEvent
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
@@ -10,5 +9,6 @@ class Event
   field :body, type: String
   
   belongs_to :shop
-  tenant(:shop)
+  
+  
 end
