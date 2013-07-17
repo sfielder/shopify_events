@@ -39,7 +39,7 @@ ShopifyEvents::Application.routes.draw do
   #match 'webhooks/orders/delete/:id' => 'webhook#orders_delete'
   #match 'webhooks/orders/create/:id' => 'webhook#orders_create'
   
-  match "webhooks/:class/:method/:id", :to => "webhook#new"
+  match "webhooks/:class/:method/:shopid", :to => "webhook#new"
   #match 'webhooks/products/delete/:id' => 'webhook#products_delete'
   
   
