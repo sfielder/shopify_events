@@ -6,7 +6,8 @@ class WebhookEvent
   
   field :body, type: String
   field :shopify_store, type: String
-  field :topic, type: String
+  field :class, type: String
+  field :method, type: String
   
   tenant(:shop)
 end

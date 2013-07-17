@@ -3,105 +3,17 @@ class WebhookController < ApplicationController
   before_filter :verify_webhook, :except => 'verify_webhook'
   
   ############################# APP
-  def app_uninstalled
-    #puts "###################################### #{ShopifyAPI::Webhook.create(:address => "http://shopify-events.herokuapp.com/webhooks/events/update", :format => 'json', :topic => 'products/update').to_yaml}"
-    #ShopifyAPI::Webhook.delete("3079807")
+  def new
     data = ActiveSupport::JSON.decode(request.body.read)
-    puts "app_uninstalled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  
-  ############################# SHOP
-  def shop_update
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "shop_update %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  
-  ############################# ORDERS
-  def orders_create
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "orders_create %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  
-  def orders_updated
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "orders_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  def orders_partially_fulfilled
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "orders_partially_fulfilled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  def orders_paid
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "orders_paid %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  
-  def orders_cancelled
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "orders_cancelled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  
-  def orders_fulfilled
-  data = ActiveSupport::JSON.decode(request.body.read)
-    puts "orders_fulfilled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    head :ok
-  end
-  
-  
-  
-  ############################# PRODUCTS
-  def products_updated #product_updated
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data[id] = " + data["id"].to_s
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     
-    @event = Product.where(shopify_product_id: data["id"]).first
+    #wh = Webhook.new(:class => )
     
-    if @event
-    
-    #puts "event is here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% = #{@event}"
-    
-     @whevent = WebhookEvent.new(:topic => "products/update", :body => data, :shop => data["id"])
-     @whevent.save
-      
-    #  @event.title = data["title"]
-      
-    #  puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save!}"
-      
-    end
-    
-      head :ok
-  end
-
-  def products_deleted
-    data = ActiveSupport::JSON.decode(request.body.read)
-    puts "products_deleted %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    product = Product.where('shopify_id = ?', data["product_id"]).first
-    if product
-      puts 'products shop id: ' + product.shop.id
-      event = WebhookEvent.new(:event_type => "product delete")
-      event.save
-      product.logical_delete = true
-      product.webhook_events << event
-      product.shop.webhook_events << event
-      product.shop.save
-      product.save
-    end
     head :ok
   end
+  
+  
+  
   
   private
   
