@@ -8,7 +8,6 @@ class WebhookEvent
   field :class, type: String
   field :body, type: String
   
-  belongs_to :shop
   
   
 end
