@@ -12,11 +12,16 @@ class HomeController < ApplicationController
     # get latest 5 orders
     @orders   = Order.all.limit(5).order_by(:created_at.asc)
     
+    @count = ShopifyWebhook.verify_webhooks 
+    
+    @webhooks = ShopifyWebhook.get_webhooks
+    
     if ShopifyWebhook.verify_webhooks == Webhook.count
     
-    else
-      ShopifyWebhook.create_webhooks
-    end
+     else
+         ShopifyWebhook.create_webhooks
+     end
+        
     
     
    end

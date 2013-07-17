@@ -1,6 +1,5 @@
 class WebhookController < ApplicationController
   
-  skip_before_action :verify_authenticity_token
   before_filter :verify_webhook, :except => 'verify_webhook'
   
   ############################# APP
@@ -9,7 +8,7 @@ class WebhookController < ApplicationController
     #ShopifyAPI::Webhook.delete("3079807")
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "app_uninstalled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
-    
+    head :ok
   end
   
   
@@ -17,6 +16,7 @@ class WebhookController < ApplicationController
   def shop_update
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "shop_update %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    head :ok
   end
   
   
@@ -24,59 +24,65 @@ class WebhookController < ApplicationController
   def orders_create
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "orders_create %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    head :ok
   end
   
   
   def orders_updated
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "orders_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    head :ok
   end
   
   def orders_partially_fulfilled
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "orders_partially_fulfilled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    head :ok
   end
   
   def orders_paid
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "orders_paid %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    head :ok
   end
   
   
   def orders_cancelled
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "orders_cancelled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    head :ok
   end
   
   
   def orders_fulfilled
   data = ActiveSupport::JSON.decode(request.body.read)
     puts "orders_fulfilled %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
+    head :ok
   end
   
   
   
   ############################# PRODUCTS
   def products_updated #product_updated
-    data = params
+    data = ActiveSupport::JSON.decode(request.body.read)
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     puts "products_updated %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data[id] = " + data["id"].to_s
     
-    @event = Event.where(shopify_product_id: data["id"]).first
+    @event = Product.where(shopify_product_id: data["id"]).first
     
     if @event
     
-    puts "event is here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% = #{@event}"
+    #puts "event is here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% = #{@event}"
     
-      @whevent = WebhookEvent.new(:event_type => "event update")
-      @whevent.event = @event 
-      @whevent.save
+     @whevent = WebhookEvent.new(:topic => "products/update", :body => data, :shop => data["id"])
+     @whevent.save
       
-      @event.title = data["title"]
+    #  @event.title = data["title"]
       
-      puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save!}"
+    #  puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$ #{@event.save!}"
       
     end
+    
       head :ok
   end
 

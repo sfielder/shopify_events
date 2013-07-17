@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def index
     
     @orders = Order.where(event: params[:id]).page params[:page]
-    @event = Event.find(params[:id])
+    @event = Product.find(params[:id])
     
     respond_to do |format|
       format.html # index.html.erb

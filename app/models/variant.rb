@@ -10,9 +10,9 @@ class Variant
   field :shopify_product_variant_id, type: String
   field :active, type: Boolean
   
-  belongs_to :account
-  belongs_to :event
-  tenant(:account)
+  belongs_to :shop
+  belongs_to :product
+  tenant(:shop)
   
   before_save :create_shopify_product_variant
   before_update :update_shopify_product_variant

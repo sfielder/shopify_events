@@ -10,10 +10,10 @@ class Order
   field :status, type: String
   field :shopify_id, type: String
   
-  belongs_to :account
+  belongs_to :shop
   belongs_to :event
   belongs_to :customer
-  tenant(:account)
+  tenant(:shop)
   
   has_one :address, :as => :billing_address
   

@@ -5,7 +5,7 @@
 		<% if @orders.blank? %>
 			<table class="table table-striped">
 				<tr>
-					<td><em>There are no event registrations for the <%= @event.title %>.</em></td>
+					<td><em>There are no event registrations for the <%= @product.title %>.</em></td>
 				</tr>
 				
 			</table>
@@ -24,7 +24,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @event.orders.take(5).each do |i| %>
+			<% @product.orders.take(5).each do |i| %>
 			<tr>
 				<td><strong>
 				<%= i.order_number.upcase %>
@@ -60,7 +60,7 @@
 	</table>
 
 </div>
-<%= link_to "VIEW ALL", orders_path(:id => @event), :class => "btn-flat default" %>
+<%= link_to "VIEW ALL", orders_path(:id => @product), :class => "btn-flat default" %>
 <% end %>
 </div>
 

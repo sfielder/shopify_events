@@ -1,7 +1,7 @@
 <div class="well">
 	<h3>TICKET TYPES</h3>
 	<br/>
-	<% if @event.variants? %>
+	<% if @product.variants? %>
 	<div class="row-fluid">
 		<div id="bar-example" ></div>
 		</div>
@@ -21,7 +21,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @event.variants.each do |i| %>
+					<% @product.variants.each do |i| %>
 					<tr>
 						<td><strong> <%= i.name.upcase %> </strong></td>
 						<td><%= i.capacity  %></td>
@@ -65,7 +65,7 @@
 	<% else %>
 	<table class="table table-striped">
 				<tr>
-					<td><em>There are no ticket types for the <%= @event.title %>.</em></td>
+					<td><em>There are no ticket types for the <%= @product.title %>.</em></td>
 				</tr>
 				
 			</table>
@@ -79,11 +79,11 @@
 <%= content_for :jsfooter do %>
 		<%= render 'partials/morris_js' %>
 <script>
-<% if @event.variants? %>	
+<% if @product.variants? %>	
 	Morris.Bar({
   element: 'bar-example',
   data: [
-  <% @event.variants.each do |i| %>
+  <% @product.variants.each do |i| %>
     { y: '<%= i.name %>', a: <%= i.capacity %>, b: 90 },
     <% end %>
   ],

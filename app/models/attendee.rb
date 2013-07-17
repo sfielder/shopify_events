@@ -14,9 +14,11 @@ class Attendee
   field :country, type: String
   field :zip, type: String
   
-  belongs_to :account
+  
   belongs_to :order
-  belongs_to :event
-  tenant(:account)
+  belongs_to :product
+  
+  belongs_to :shop
+  tenant(:shop)
   
 end

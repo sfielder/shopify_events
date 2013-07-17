@@ -1,3 +1,8 @@
+<%= @count %>
+<% @webhooks.each do |w| %>
+	<%= w.address %> <br/>
+<% end %>
+
 <% content_for :statsheader do %>
 <!-- upper main stats -->
 <div id="main-stats">
@@ -5,7 +10,7 @@
 
 		<div class="span4 stat">
 			<div class="data">
-				<span class="number"><%= Event.count %></span>
+				<span class="number"><%= Product.count %></span>
 				Active Events
 			</div>
 			<span class="date">Today</span>

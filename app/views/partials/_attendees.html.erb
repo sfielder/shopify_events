@@ -2,10 +2,10 @@
 	<h3>ATTENDEES</h3>
 	<br/>
 	<div class="row-fluid">
-		<% if @event.attendees.blank? %>
+		<% if @product.attendees.blank? %>
 			<table class="table table-striped">
 				<tr>
-					<td><em>There are no event attendees for the <%= @event.title %>.</em></td>
+					<td><em>There are no event attendees for the <%= @product.title %>.</em></td>
 				</tr>
 				
 			</table>
@@ -21,7 +21,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @event.attendees.take(5).each do |i| %>
+			<% @product.attendees.take(5).each do |i| %>
 			<tr>
 				<td><strong>
 				<%= i.first_name  %> <%= i.last_name  %>
@@ -36,7 +36,7 @@
 	</table>
 
 </div>
-<%= link_to "VIEW ALL", attendees_path(:id => @event), :class => "btn-flat default" %>
+<%= link_to "VIEW ALL", attendees_path(:id => @product), :class => "btn-flat default" %>
 
 <% end %>
 </div>

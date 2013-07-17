@@ -2,7 +2,7 @@
 <div id="newModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">New <%= @event.title.upcase %> Ticket Type</h3>
+    <h3 id="myModalLabel">New <%= @product.title.upcase %> Ticket Type</h3>
   </div>
   <div class="modal-body">
   	
@@ -14,7 +14,7 @@
 	    <%= f.input :name, :required => true %>
 	    <%= f.input :capacity, :required => true %>
 	    <%= f.input :price, :required => true %>
-	    <%= f.input :event_id, :as => :hidden, :input_html => { :value => @event.id } %>
+	    <%= f.input :event_id, :as => :hidden, :input_html => { :value => @product.id } %>
 	  </div>
 	  
 		<div class="span6 well pull-right alert-success">

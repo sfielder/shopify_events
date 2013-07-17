@@ -1,6 +1,6 @@
 
 <br/>
-<%= simple_form_for @event, :html => { :class => 'form-vertical well' } do |c| %>
+<%= simple_form_for @product, :controller => "events", :action => "create", :html => { :class => 'form-vertical well' } do |c| %>
   
  <div class="row-fluid">
   <div class="span5">
@@ -51,7 +51,7 @@
 	$(function(){
 	    var now = new Date();
 	
-	    $('#event_start_datetime').scroller({
+	    $('#product_start_datetime').scroller({
 	        preset: 'datetime',
 	        minDate: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
 	        theme: 'ios',
@@ -72,7 +72,7 @@
 	$(function(){
 	    var now = new Date();
 	
-	    $('#event_end_datetime').scroller({
+	    $('#product_end_datetime').scroller({
 	        preset: 'datetime',
 	        minDate: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
 	        theme: 'ios',

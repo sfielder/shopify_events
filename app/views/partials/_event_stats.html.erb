@@ -4,21 +4,21 @@
 
 		<div class="span4 stat">
 			<div class="data">
-				<span class="number"><%= @event.orders.count %></span>
+				<span class="number"><%= @product.orders.count %></span>
 				Registrations
 			</div>
 			<span class="date">Total</span>
 		</div>
 		<div class="span4 stat">
 			<div class="data">
-				<span class="number"><%= number_to_currency(@event.orders.sum(:total)) %></span>
+				<span class="number"><%= number_to_currency(@product.orders.sum(:total)) %></span>
 				event revenue
 			</div>
 			<span class="date">This month</span>
 		</div>
 		<div class="span4 stat last">
 			<div class="data">
-				<span class="number"><%= @event.attendees.count %></span>
+				<span class="number"><%= @product.attendees.count %></span>
 				confirmed attendees
 			</div>
 			<span class="date">last 30 days</span>

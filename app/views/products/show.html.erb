@@ -1,0 +1,104 @@
+
+<div class="row-fluid">
+	<h2><%= @product.title.upcase %></h2>
+	<div class="pull-right">
+		<!--<%= link_to edit_event_path(@product), :class => 'btn-flat icon pull-right' do %>
+		<i class="icon-wrench"></i>
+		START CHECKIN
+		<% end %> -->
+
+		<%= link_to t('.edit', :default => t("helpers.links.edit")),
+		edit_event_path(@product), :class => 'btn-flat default pull-right' %>
+
+	</div>
+</div>
+
+<br/>
+<%= render 'partials/event_stats'%>
+
+<br/>
+
+<div class="row-fluid">
+	<div class="span6 well">
+		<h3>EVENT DETAILS</h3>
+		<dl class="dl-horizontal">
+
+			<dt>
+				<strong>Title:</strong>
+			</dt>
+			<dd>
+				<%= @product.title.upcase %>
+			</dd>
+			<dt>
+				<strong>Start Datetime:</strong>
+			</dt>
+			<dd>
+				<%= @product.start_datetime %>
+			</dd>
+			<dt>
+				<strong>End Datetime:</strong>
+			</dt>
+			<dd>
+				<%= @product.end_datetime %>
+			</dd>
+
+		</dl>
+	</div>
+
+	<div class="span6 well">
+		<h3>VENUE DETAILS</h3>
+		<dl class="dl-horizontal">
+
+			<dt>
+				<strong>Venue Street Address:</strong>
+			</dt>
+			<dd>
+				<%= @product.venue_street_address %>
+			</dd>
+			<dt>
+				<strong>Venue Secondary Address:</strong>
+			</dt>
+			<dd>
+				<%= @product.venue_secondary_address %>
+			</dd>
+			<dt>
+				<strong>Venue City:</strong>
+			</dt>
+			<dd>
+				<%= @product.venue_city %>
+			</dd>
+			<dt>
+				<strong>Venue State Province:</strong>
+			</dt>
+			<dd>
+				<%= @product.venue_state_province %>
+			</dd>
+			<dt>
+				<strong>Vennue Country:</strong>
+			</dt>
+			<dd>
+				<%= @product.venue_country %>
+			</dd>
+
+		</dl>
+	</div>
+</div>
+
+<div class="row-fluid ">
+	<div class="span12 well">
+	<h3>EVENT DESCRIPTION</h3> <br/>
+	<% if !@product.body_html.nil? %>
+		<%= @product.body_html.html_safe %>
+	<% end %>
+	</div>
+	</div>
+
+<%= render 'partials/variants'%>
+
+<%= render 'partials/orders'%>
+
+<%= render 'partials/attendees'%>
+
+</div>
+
+

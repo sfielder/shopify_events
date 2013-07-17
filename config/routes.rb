@@ -1,9 +1,6 @@
 ShopifyEvents::Application.routes.draw do
   
 
-
-  get "webhook/product_updated"
-
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -20,7 +17,8 @@ ShopifyEvents::Application.routes.draw do
     delete 'logout' => :destroy
   end
   
-  resources :events 
+  resources :events, controller: 'products'
+  resources :products
   resources :variants
   resources :customers
   resources :orders
@@ -29,80 +27,23 @@ ShopifyEvents::Application.routes.draw do
   
   #webhooks
   
-  match 'webhooks/app/uninstalled' => 'webhook#app_uninstalled'
+  match 'webhooks/app/uninstalled/:id' => 'webhook#app_uninstalled'
   
-  match 'webhooks/shop/updated' => 'webhook#shop_updated'
+  match 'webhooks/shop/updated/:id' => 'webhook#shop_updated'
   
-  match 'webhooks/orders/partially_fulfilled' => 'webhook#orders_partially_fulfulled'
-  match 'webhooks/orders/fulfilled' => 'webhook#orders_fulfulled'
-  match 'webhooks/orders/cancelled' => 'webhook#orders_cancelled'
-  match 'webhooks/orders/paid' => 'webhook#orders_paid'
-  match 'webhooks/orders/updated' => 'webhook#orders_updated'
-  match 'webhooks/orders/delete' => 'webhook#orders_delete'
-  match 'webhooks/orders/create' => 'webhook#orders_create'
+  match 'webhooks/orders/partially_fulfilled/:id' => 'webhook#orders_partially_fulfulled'
+  match 'webhooks/orders/fulfilled/:id' => 'webhook#orders_fulfulled'
+  match 'webhooks/orders/cancelled/:id' => 'webhook#orders_cancelled'
+  match 'webhooks/orders/paid/:id' => 'webhook#orders_paid'
+  match 'webhooks/orders/updated/:id' => 'webhook#orders_updated'
+  match 'webhooks/orders/delete/:id' => 'webhook#orders_delete'
+  match 'webhooks/orders/create/:id' => 'webhook#orders_create'
   
-  match 'webhooks/products/update' => 'webhook#products_updated'
-  match 'webhooks/products/delete' => 'webhook#products_delete'
+  match "webhooks/products/update/:id", :to => "webhook#products_updated", :as => "webhooks_product_update"
+  match 'webhooks/products/delete/:id' => 'webhook#products_delete'
   
   
   root :to => 'home#index'
   
 
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end
