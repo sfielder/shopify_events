@@ -4,6 +4,7 @@ class WebhookController < ApplicationController
   
   ############################# APP
   def new
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% params = " + params
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     
