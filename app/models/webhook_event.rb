@@ -5,9 +5,9 @@ class WebhookEvent
   include Mongoid::Multitenancy::Document
   
   field :body, type: String
-  field :shopify_store, type: String
   field :class, type: String
   field :method, type: String
   
+  belongs_to :shop
   tenant(:shop)
 end

@@ -11,7 +11,7 @@ class WebhookController < ApplicationController
     data = ActiveSupport::JSON.decode(request.body.read)
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% data = " + data.to_s
     
-    #wh = Webhook.new(:class => )
+    Webhook.create(:class => params["class"], :method => params["method"], :shop => params["shopid"])
     
     head :ok
   end
