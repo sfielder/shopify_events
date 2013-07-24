@@ -1,6 +1,9 @@
 ShopifyEvents::Application.routes.draw do
   
 
+  resources :histories
+
+
   resources :webhook_events
 
 
@@ -30,7 +33,7 @@ ShopifyEvents::Application.routes.draw do
   resources :webhook_events
   
   #webhooks
-  #match ":class/:method/:shopid/webhook.json", :to => "webhook_events#create"
+  match ":class/:method/:shopid/webhook.json", :to => "webhook_events#create"
   
   root :to => 'home#index'
   

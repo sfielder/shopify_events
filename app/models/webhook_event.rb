@@ -4,9 +4,11 @@ class WebhookEvent
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
   
-  field :method, type: String
-  field :class, type: String
   field :body, type: String
+  field :processed, type: Boolean
+  
+  belongs_to :shop
+  tenant(:shop)
   
   
   

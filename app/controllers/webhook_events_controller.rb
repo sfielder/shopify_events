@@ -47,7 +47,11 @@ class WebhookEventsController < ApplicationController
     
     puts "%%%%%%%%%%%% parameters #{params}"
     
-    @webhook_event = WebhookEvent.new(params[:webhook_event])
+    @webhook_event = WebhookEvent.new(
+        shop: Shop.find(params["shopid"]),
+        processed: false,
+        body: params
+      )
 
     respond_to do |format|
       if @webhook_event.save
