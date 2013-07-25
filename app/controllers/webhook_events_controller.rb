@@ -4,7 +4,7 @@ class WebhookEventsController < ApplicationController
   
   # GET /webhook_events
   # GET /webhook_events.json
-  def index
+=begin  def index
     @webhook_events = WebhookEvent.all
 
     respond_to do |format|
@@ -40,7 +40,7 @@ class WebhookEventsController < ApplicationController
   def edit
     @webhook_event = WebhookEvent.find(params[:id])
   end
-
+=end
   # POST /webhook_events
   # POST /webhook_events.json
   def create
@@ -56,14 +56,14 @@ class WebhookEventsController < ApplicationController
     respond_to do |format|
       if @webhook_event.save
         format.html { redirect_to @webhook_event, notice: 'Webhook event was successfully created.' }
-        format.json { render json: @webhook_event, status: :created, location: @webhook_event }
+        format.json { render json: @webhook_event, status: :created }
       else
         format.html { render action: "new" }
         format.json { render json: @webhook_event.errors, status: :unprocessable_entity }
       end
     end
   end
-
+=begin
   # PUT /webhook_events/1
   # PUT /webhook_events/1.json
   def update
@@ -91,7 +91,7 @@ class WebhookEventsController < ApplicationController
       format.json { head :no_content }
     end
   end
- 
+=end 
   
   
   
