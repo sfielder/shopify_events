@@ -15,20 +15,12 @@ class ShopifyWebhook
       #ShopifyAPI::Webhook.delete("3079807")
     end
  end
-
   
- 
  def self.process_order webhook_event
-    data = ActiveSupport::JSON.decode(request.body.read)
+    data = ActiveSupport::JSON.decode(webhook_event.body)
     puts "data = " + data.to_s
-    product = Product.where('shopify_id = ?', data["id"]).first
-    if product
-      event = WebhookEvent.new(:event_type => "product update")
-      event.save
-      product.name = data["title"]
-      product.webhook_events << event
-      product.save
-    end
+    order = Order.find_or_create_by(shopify_id: data["id"])
+    puts "data = " + data.to_s
  end 
 
  def self.process_product webhook_event
