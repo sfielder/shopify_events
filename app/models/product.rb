@@ -18,13 +18,21 @@ class Product
   field :venue_state_province, type: String
   field :venue_country, type: String
   field :venue_virtual, type: Boolean
-  field :shopify_product_id, type: String
+  field :shopify_id, type: String
   field :body_html, type: String 
+  field :handle, type: String
+  field :product_type, type: String
+  field :published_scope, type: String
+  field :vendor, type: String
+  field :tags, type: String
+  
   
   belongs_to :shop
   tenant(:shop)
   
-  has_many :variants
+  embeds_many :variants
+  accepts_nested_attributes_for :variants
+  
   has_many :orders
   has_many :attendees
   has_many :webhook_events
