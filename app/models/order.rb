@@ -4,6 +4,9 @@ class Order
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
   
+  embeds_many :line_items
+  accepts_nested_attributes_for :line_items
+  
   field :order_number, type: String
   field :quantity, type: Integer
   field :total, type: Float

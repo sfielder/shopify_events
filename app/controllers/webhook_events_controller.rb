@@ -1,48 +1,7 @@
 class WebhookEventsController < ApplicationController
   
-  #before_filter :verify_webhook, :except => 'verify_webhook'
+  before_filter :verify_webhook, :except => 'verify_webhook'
   
-  # GET /webhook_events
-  # GET /webhook_events.json
-=begin  def index
-    @webhook_events = WebhookEvent.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @webhook_events }
-    end
-  end
-
-  # GET /webhook_events/1
-  # GET /webhook_events/1.json
-  def show
-    @webhook_event = WebhookEvent.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @webhook_event }
-    end
-  end
-
-  # GET /webhook_events/new
-  # GET /webhook_events/new.json
-  def new
-    @webhook_event = WebhookEvent.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @webhook_event }
-    end
-  end
-
-
-  # GET /webhook_events/1/edit
-  def edit
-    @webhook_event = WebhookEvent.find(params[:id])
-  end
-=end
-  # POST /webhook_events
-  # POST /webhook_events.json
   def create
     
     puts "%%%%%%%%%%%% parameters #{params}"
@@ -55,43 +14,12 @@ class WebhookEventsController < ApplicationController
 
     respond_to do |format|
       if @webhook_event.save
-        format.html { redirect_to @webhook_event, notice: 'Webhook event was successfully created.' }
         format.json { render json: @webhook_event, status: :created }
       else
-        format.html { render action: "new" }
         format.json { render json: @webhook_event.errors, status: :unprocessable_entity }
       end
     end
   end
-=begin
-  # PUT /webhook_events/1
-  # PUT /webhook_events/1.json
-  def update
-    @webhook_event = WebhookEvent.find(params[:id])
-
-    respond_to do |format|
-      if @webhook_event.update_attributes(params[:webhook_event])
-        format.html { redirect_to @webhook_event, notice: 'Webhook event was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @webhook_event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /webhook_events/1
-  # DELETE /webhook_events/1.json
-  def destroy
-    @webhook_event = WebhookEvent.find(params[:id])
-    @webhook_event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to webhook_events_url }
-      format.json { head :no_content }
-    end
-  end
-=end 
   
   
   

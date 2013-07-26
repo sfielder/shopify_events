@@ -6,6 +6,7 @@ class LineItem
   include Mongoid::Multitenancy::Document
   
   belongs_to :shop
+  belongs_to :order
   tenant(:shop)
   
   field :fulfillment_service, type: String
