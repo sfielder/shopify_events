@@ -74,8 +74,8 @@ class Product
   
   def create_shopify_product
   
-    if self.shopify_product_id.nil?
-      self.shopify_product_id = ShopifyAPI::Product.create(
+    if self.shopify_id.nil?
+      self.shopify_id = ShopifyAPI::Product.create(
               :product_type => "Event",
               :vendor => "Shopify EVENTS", 
               :title => self.title).id

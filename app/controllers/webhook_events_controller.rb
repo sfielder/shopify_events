@@ -6,12 +6,28 @@ class WebhookEventsController < ApplicationController
     
     puts "%%%%%%%%%%%% parameters #{params}"
     
-    @webhook_event = WebhookEvent.new(
-        shop: Shop.find(params["shopid"]),
-        processed: false,
-        body: params
-      )
-
+    if Shop.find(params["shopid"])
+      
+      @class = params["class"].constantize 
+      @instance = @class.find(params["id"])
+      
+      puts "########################### @class #{@class}"
+      puts "########################### @product #{@instance.to_json}"
+      
+      if !@instance.nil?
+         @webhook_event = WebhookEvent.new(
+          shop: Shop.find(params["shopid"]),
+          processed: false,
+          body: params
+        )
+        
+      end
+      
+        
+    end
+    
+    
+    
     respond_to do |format|
       if @webhook_event.save
         format.html { redirect_to @webhook_event, notice: 'Webhook event was successfully created.' }
