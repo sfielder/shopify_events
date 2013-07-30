@@ -26,8 +26,6 @@ class WebhookEventsController < ApplicationController
         
     end
     
-    
-    
     respond_to do |format|
       if @webhook_event.save
         format.html { redirect_to @webhook_event, notice: 'Webhook event was successfully created.' }
