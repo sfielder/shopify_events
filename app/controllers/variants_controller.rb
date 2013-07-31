@@ -49,7 +49,7 @@ class VariantsController < ApplicationController
 
     respond_to do |format|
       if @variant.save
-        format.html { redirect_to event_path(@variant.product), notice: 'Ticket type was successfully created.' }
+        format.html { redirect_to event_path(Product.find(params[:variant]["product_id"])), notice: 'Ticket type was successfully created.' }
         format.json { render json: @variant, status: :created, location: @variant }
       else
         format.html { render action: "new" }
