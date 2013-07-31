@@ -30,8 +30,7 @@ class Product
   belongs_to :shop
   tenant(:shop)
   
-  embeds_many :variants
-  accepts_nested_attributes_for :variants
+  has_many :variants
   
   has_many :orders
   has_many :attendees

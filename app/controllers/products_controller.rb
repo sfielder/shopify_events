@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   # GET /Products/1.json
   def show
     @product = Product.find(params[:id])
+    puts "################## #{Variant.where(product_id: params[:id]).to_json}"
     @variant = Variant.new
     respond_to do |format|
       format.html # show.html.erb
