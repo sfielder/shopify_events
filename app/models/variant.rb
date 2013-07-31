@@ -9,6 +9,7 @@ class Variant
   field :capacity, type: Integer
   field :price, type: Float
   field :shopify_id, type: String
+  field :shopify_product_id, type: String
   field :active, type: Boolean
   field :barcode, type: String
   field :compare_at_price, type: String
@@ -53,7 +54,7 @@ class Variant
         :option1 => self.name,
         :price => self.price,
         :sku => self.id,
-        :product_id => self.product_id, 
+        :product_id => Product.find(self.product_id).shopify_id, 
         :title => self.name).id
        self.active = true 
     end
