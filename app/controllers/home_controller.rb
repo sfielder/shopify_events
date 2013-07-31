@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   end
   
   def index
-    
+     
     # get latest 5 orders
     @orders   = Order.all.limit(5).order_by(:created_at.asc)
     

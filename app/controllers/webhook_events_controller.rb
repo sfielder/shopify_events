@@ -8,7 +8,7 @@ class WebhookEventsController < ApplicationController
     
     if Shop.find(params["shopid"])
       
-      @class = params["class"].constantize 
+      @class = params["class"].classify.constantize 
       @instance = @class.find(params["id"])
       
       puts "########################### @class #{@class}"
