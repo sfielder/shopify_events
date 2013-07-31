@@ -46,7 +46,7 @@ class Variant
   
   def create_shopify_product_variant
     if self.shopify_id.nil?
-      self.product = Product.find(self.product_id)
+      self.product = Product.find(self.product_id).first
       self.shopify_id = ShopifyAPI::Variant.create(
         :inventory_management => 'shopify', 
         :inventory_policy => 'deny',
@@ -54,7 +54,7 @@ class Variant
         :option1 => self.name,
         :price => self.price,
         :sku => self.id,
-        :product_id => Product.find(self.product_id).shopify_id, 
+        :product_id => self.product.shopify_id, 
         :title => self.name).id
        self.active = true 
     end
