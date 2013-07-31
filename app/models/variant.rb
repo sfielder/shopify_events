@@ -46,7 +46,7 @@ class Variant
   def create_shopify_product_variant
     if self.shopify_product_variant_id.nil?
       
-      self.shopify_product_variant_id = ShopifyAPI::Variant.create(
+      self.shopify_id = ShopifyAPI::Variant.create(
         :inventory_management => 'shopify', 
         :inventory_policy => 'deny',
         :inventory_quantity => self.capacity, 
