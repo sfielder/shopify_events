@@ -53,7 +53,7 @@ class Variant
         :option1 => self.name,
         :price => self.price,
         :sku => self.id,
-        :product_id => self.product.shopify_id, 
+        :product_id => self.product_id, 
         :title => self.name).id
        self.active = true 
     end
