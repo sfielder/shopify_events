@@ -9,7 +9,7 @@ class WebhookEventsController < ApplicationController
     if Shop.find(params["shopid"])
       
       @class = params["class"].classify.constantize 
-      @instance = @class.find(params["id"])
+      @instance = @class.where(shopify_id: params["id"])
       
       puts "########################### @class #{@class}"
       puts "########################### @product #{@instance.to_json}"
