@@ -25,8 +25,6 @@ class HomeController < ApplicationController
          ShopifyWebhook.create_webhooks
      end
        
-    
-    
-   end
+  end
   
 end
