@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   
   def index
      
-     @history = Product.all.first.history_tracks
+     
      
     # get latest 5 orders
     @orders   = Order.all.limit(5).order_by(:created_at.asc)
