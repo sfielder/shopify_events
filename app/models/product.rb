@@ -93,10 +93,10 @@ class Product
   def update_shopify_product
     if self.changed?
       
-        if self.shopify_product_id.nil?
+        if self.shopify_id.nil?
           create_shopify_product
         else 
-          product = ShopifyAPI::Product.find(self.shopify_product_id)
+          product = ShopifyAPI::Product.find(self.shopify_id)
           product.title = self.title
           product.body_html = self.body_html
           product.save
