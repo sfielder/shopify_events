@@ -4,6 +4,10 @@ class ShopifyWebhook
     ShopifyAPI::Webhook.count
  end
  
+ def self.delete_webhooks
+    ShopifyAPI::Webhook.count
+ end
+ 
  def self.get_webhooks
     ShopifyAPI::Webhook.find(:all)
  end

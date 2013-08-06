@@ -6,7 +6,6 @@ class WebhookEventsController < ApplicationController
     
     puts "%%%%%%%%%%%% parameters #{params}"
     
-    #@models = ActiveRecord::Base.connection.tables.collect{|t| t.underscore.singularize.camelize}
     if Shop.find(params["shopid"])
       @class = params["class"].classify.constantize 
       @instance = @class.where(shopify_id: params["id"])

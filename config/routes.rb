@@ -4,7 +4,11 @@ ShopifyEvents::Application.routes.draw do
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
+  mount Resque::Server, :at => "/resque"
+  
+  
+  
+  
   match 'welcome' => 'home#welcome'
   match 'design' => 'home#design'
   

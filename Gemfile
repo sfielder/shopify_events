@@ -25,6 +25,17 @@ gem 'less-rails-bootstrap'
 
 gem "fuelux-rails"
 
+#BACKGROUND JOB PROCESSING
+gem 'resque', "~> 1.22.0"
+gem 'resque-scheduler'
+gem 'resque-status'
+
+#HEROKU AUTO SCALING
+gem 'heroku' 
+
+#new relic
+#gem 'newrelic_rpm'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
