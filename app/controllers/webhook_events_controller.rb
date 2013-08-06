@@ -6,8 +6,8 @@ class WebhookEventsController < ApplicationController
     
     puts "%%%%%%%%%%%% parameters #{params}"
     
+    #@models = ActiveRecord::Base.connection.tables.collect{|t| t.underscore.singularize.camelize}
     if Shop.find(params["shopid"])
-      
       @class = params["class"].classify.constantize 
       @instance = @class.where(shopify_id: params["id"])
       
@@ -22,16 +22,14 @@ class WebhookEventsController < ApplicationController
         )
         
       end
-      
-        
     end
     
     respond_to do |format|
       if @webhook_event.save
-        format.html { redirect_to @webhook_event, notice: 'Webhook event was successfully created.' }
+        #format.html { redirect_to @webhook_event, notice: 'Webhook event was successfully created.' }
         format.json { render json: @webhook_event, status: :created }
       else
-        format.html { render action: "new" }
+        #format.html { render action: "new" }
         format.json { render json: @webhook_event.errors, status: :unprocessable_entity }
       end
     end
