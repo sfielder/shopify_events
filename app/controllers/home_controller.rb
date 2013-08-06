@@ -18,13 +18,13 @@ class HomeController < ApplicationController
     @count = ShopifyWebhook.verify_webhooks 
     
     @webhooks = ShopifyWebhook.get_webhooks
-=begin    
-    if ShopifyWebhook.verify_webhooks == Webhook.count
+
+  if ShopifyWebhook.verify_webhooks == Webhook.count
     
      else
          ShopifyWebhook.create_webhooks
      end
-=end        
+       
     
     
    end
