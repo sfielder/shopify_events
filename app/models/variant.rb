@@ -4,7 +4,7 @@ class Variant
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
-  
+  include Mongoid::History::Trackable
   
   field :name, type: String
   field :capacity, type: Integer

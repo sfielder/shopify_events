@@ -74,7 +74,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     respond_to do |format|
-      if @product.update_attributes(params[:Product])
+      if @product.update_attributes(params[:product])
         format.html { redirect_to event_path(@product), notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else

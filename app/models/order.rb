@@ -52,21 +52,6 @@ class Order
   field :customer, type: String
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  belongs_to :shop
   belongs_to :event
   belongs_to :customer
   tenant(:shop)

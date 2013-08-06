@@ -15,7 +15,9 @@
 
 	
 	 <div class="row-fluid ">
-     
+     <%= @products_upcoming.to_json %> <br/>
+     <%= @products_previous.to_json %><br/>
+     <%= @products_all.to_json %><br/>
 	 <ul class="nav nav-tabs" id="myTab">
 	  <li><a href="#upcoming" data-toggle="tab">Upcoming</a></li>
 	  <li><a href="#previous" data-toggle="tab">Previous</a></li>
@@ -26,7 +28,7 @@
 	<div class="tab-content">
 		<div class="tab-pane" id="upcoming">
 			<div class="table-products well">
-				<% if @events_upcoming.blank? %>
+				<% if @products_upcoming.blank? %>
 			<table class="table table-striped">
 				<tr>
 					<td><em>There are no upcoming events.</em></td>
@@ -45,7 +47,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @events_upcoming.each do |i| %>
+			<% @products_upcoming.each do |i| %>
 			<tr>
 				<td><strong><%= link_to event_path(i) do %>
 				<%= i.title.upcase %>
@@ -77,7 +79,7 @@
 	 </div>
 		<div class="tab-pane" id="previous">
 			<div class="table-products well">
-				<% if @events_previous.blank? %>
+				<% if @products_previous.blank? %>
 			<table class="table table-striped">
 				<tr>
 					<td><em>There are no previous events.</em></td>
@@ -96,7 +98,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @events_previous.each do |i| %>
+			<% @products_previous.each do |i| %>
 			<tr>
 				<td><strong><%= link_to event_path(i) do %>
 				<%= i.title.upcase %>
@@ -129,7 +131,7 @@
 	  <div class="tab-pane" id="all">
 	  	
 	  	<div class="table-products well">
-	  		<% if @events.blank? %>
+	  		<% if !@products.nil? %>
 			<table class="table table-striped">
 				<tr>
 					<td><em>There are no events.</em></td>

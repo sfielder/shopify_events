@@ -10,7 +10,6 @@ class Customer
   field :email, type: String
   field :shopify_id, type: String
   
-  belongs_to :shop
   tenant(:shop)
   
   has_many :orders

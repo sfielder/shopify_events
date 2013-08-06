@@ -19,7 +19,6 @@ class Attendee
   belongs_to :order
   belongs_to :product
   
-  belongs_to :shop
   tenant(:shop)
   
 end

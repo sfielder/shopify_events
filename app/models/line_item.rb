@@ -6,7 +6,6 @@ class LineItem
   include Mongoid::Multitenancy::Document
   include Mongoid::History::Trackable
   
-  belongs_to :shop
   belongs_to :order
   tenant(:shop)
   
