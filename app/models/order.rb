@@ -3,7 +3,7 @@ class Order
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
-  
+  include Mongoid::History::Trackable
   
   embeds_many :line_items
   accepts_nested_attributes_for :line_items

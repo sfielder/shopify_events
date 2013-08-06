@@ -3,7 +3,7 @@ class Attendee
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
-  
+  include Mongoid::History::Trackable
   
   field :first_name, type: String
   field :last_name, type: String

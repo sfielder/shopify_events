@@ -7,7 +7,6 @@ gem 'rails', '3.2.13'
 
 gem 'mongoid'
 gem 'mongoid-multitenancy'
-gem 'mongoid-versioning'
 
 gem 'shopify_app'
 
@@ -21,6 +20,7 @@ gem 'kaminari'
 
 #RAILS ADMIN
 gem 'rails_admin'
+gem 'mongoid-history'
 
 gem 'less-rails-bootstrap'
 

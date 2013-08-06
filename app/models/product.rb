@@ -6,7 +6,7 @@ class Product
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
-  
+  include Mongoid::History::Trackable
   
   field :title, type: String
   field :start_datetime, type: String
