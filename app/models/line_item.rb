@@ -4,6 +4,7 @@ class LineItem
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
+  include Mongoid::Versioning
   
   belongs_to :shop
   belongs_to :order

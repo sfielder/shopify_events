@@ -3,6 +3,7 @@ class Shop
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
+  include Mongoid::Versioning
   
   field :shopify_url, type: String
   field :name, type: String

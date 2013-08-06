@@ -7,8 +7,6 @@ ShopifyEvents::Application.routes.draw do
   mount Resque::Server, :at => "/resque"
   
   
-  
-  
   match 'welcome' => 'home#welcome'
   match 'design' => 'home#design'
   

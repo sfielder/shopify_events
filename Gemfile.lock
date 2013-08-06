@@ -112,6 +112,9 @@ GEM
       tzinfo (~> 0.3.22)
     mongoid-multitenancy (0.1.1)
       mongoid (~> 3)
+    mongoid-versioning (0.2.0)
+      activesupport (>= 3.0)
+      mongoid (~> 3.0)
     moped (1.5.0)
     multi_json (1.7.6)
     multipart-post (1.2.0)
@@ -265,6 +268,7 @@ DEPENDENCIES
   less-rails-bootstrap
   mongoid
   mongoid-multitenancy
+  mongoid-versioning
   rails (= 3.2.13)
   rails_admin
   resque (~> 1.22.0)

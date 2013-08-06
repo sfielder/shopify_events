@@ -3,6 +3,7 @@ class Customer
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
   include Mongoid::Multitenancy::Document
+  include Mongoid::Versioning
   
   field :first_name, type: String
   field :last_name, type: String
