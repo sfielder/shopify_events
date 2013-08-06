@@ -22,7 +22,6 @@ gem 'kaminari'
 #RAILS ADMIN
 gem 'rails_admin'
 
-
 gem 'less-rails-bootstrap'
 
 gem "fuelux-rails"
