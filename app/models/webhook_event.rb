@@ -20,4 +20,14 @@ class WebhookEvent
                   :track_destroy  =>  false    # track document destruction, default is false
   
   
+  after_create :addToResque
+  
+  private
+  def addToResque
+    puts "WEBHOOK EVENT ADDTORESQUE"
+    Resque.enqueue_in(2.minutes, ShopifyWebhookWorker, self.id)
+  end
+  
+  
+  
 end

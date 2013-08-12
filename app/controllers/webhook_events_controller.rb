@@ -1,6 +1,6 @@
 class WebhookEventsController < ApplicationController
   
-  before_filter :verify_webhook, :except => 'verify_webhook'
+  #before_filter :verify_webhook, :except => 'verify_webhook' if Rails.env.production? # only extend in production
   
   def create
     

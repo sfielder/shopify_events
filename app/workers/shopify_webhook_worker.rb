@@ -7,6 +7,10 @@ class ShopifyWebhookWorker < Resque::JobWithStatus
     
     puts "WORKER_ID: #{worker_id}"
     puts "INTEGRATION_ID: #{webhookevent_id}"
+    
+    
+    
+    
 =begin   
    client = SalesforceClient.create(integration_id)
    puts "@ CLIENT IN SALESFORCE WORKER ----------------- #{client.to_yaml}"
