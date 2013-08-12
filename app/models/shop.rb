@@ -6,6 +6,7 @@ class Shop
   include Mongoid::History::Trackable
   
   field :shopify_url, type: String
+  field :access_token, type: String
   field :name, type: String
   field :address1, type: String
   field :city, type: String
@@ -38,13 +39,6 @@ class Shop
   field :google_apps_login_enabled, type:String
   field :money_in_emails_format, type: String
   field :money_with_currency_in_emails_format, type: String
-  
-  
-  private 
-  
-  def create_webhooks 
-    ShopifyWebhook.create_webhooks
-  end
-  
+ 
   
 end

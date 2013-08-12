@@ -15,6 +15,10 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+
+ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+
+
 module ShopifyEvents
   class Application < Rails::Application
     

@@ -25,7 +25,7 @@ class WebhookEvent
   private
   def addToResque
     puts "WEBHOOK EVENT ADDTORESQUE"
-    Resque.enqueue_in(2.minutes, ShopifyWebhookWorker, self.id)
+    Resque.enqueue_in(2.minutes, ShopifyWebhookWorker, self.shop_id)
   end
   
   

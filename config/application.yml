@@ -8,7 +8,7 @@
 # Add application configuration variables here, as shown below.
 #
 APP_NAME: CHORUS M2M
-APP_DOMAIN: lvh.me:3000
+APP_DOMAIN: http://lvh.me:3000
 GMAIL_USERNAME: scottkfielder@gmail.com
 GMAIL_PASSWORD: janescott03
 ADMIN_NAME: First User

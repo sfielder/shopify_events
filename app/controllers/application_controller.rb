@@ -6,7 +6,7 @@
   
   def set_current_tenant
     if !session[:shopify].nil?
-      current_shop = Shop.find_or_create_by(shopify_url: session[:shopify].url) 
+      current_shop = Shop.find_or_create_by(shopify_url: session[:shopify].url, access_token: session[:shopify].token) 
       Mongoid::Multitenancy.current_tenant = current_shop
     end
   end

@@ -1,14 +1,16 @@
-class ShopifyWebhookWorker < Resque::JobWithStatus
+class ShopifyShopWorker < Resque::JobWithStatus
   extend HerokuResqueAutoScale if Rails.env.production? # only extend in production
   
  
   
-  def self.perform(worker_id, webhookevent_id)
+  def self.perform(worker_id, shop_id)
     
     puts "WORKER_ID: #{worker_id}"
-    puts "INTEGRATION_ID: #{webhookevent_id}"
+    puts "INTEGRATION_ID: #{shop_id}"
     
+    puts " WEBHOOK CREATION PROCESS #{ShopifyWebhook.create_webhooks(shop_id)} " 
     
+      
 =begin   
    client = SalesforceClient.create(integration_id)
    puts "@ CLIENT IN SALESFORCE WORKER ----------------- #{client.to_yaml}"
