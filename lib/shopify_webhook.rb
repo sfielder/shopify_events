@@ -4,10 +4,6 @@ class ShopifyWebhook
     ShopifyAPI::Webhook.count
  end
  
- def self.delete_webhooks
-    ShopifyAPI::Webhook.count
- end
- 
  def self.get_webhooks
     ShopifyAPI::Webhook.find(:all)
  end
@@ -16,28 +12,61 @@ class ShopifyWebhook
  def self.create_webhooks 
     Webhook.each do |wh|
       ShopifyAPI::Webhook.create(:address => "#{request.protocol}#{request.host}/#{wh.address}/#{Mongoid::Multitenancy.current_tenant.id}/webhook.json", :format => "#{wh.format}", :topic => "#{wh.topic}")
-      #ShopifyAPI::Webhook.delete("3079807")
-    end
- end
-  
- def self.process_order webhook_event
-    data = ActiveSupport::JSON.decode(webhook_event.body)
-    puts "data = " + data.to_s
-    order = Order.find_or_create_by(shopify_id: data["id"])
-    puts "data = " + data.to_s
- end 
-
- def self.process_product webhook_event
-  
- end
-  
- def self.process_shop webhook_event
-  
+  end
  end
  
- def self.process_app webhook_event
+ def self.process_webhook_event webhook_event
+    data = ActiveSupport::JSON.decode(webhook_event.body)
+    puts "data = " + data.to_s
+    
+    @class = data["class"].classify.constantize 
+            
+    puts "########################### @class #{@class}"
+    puts "########################### data[method] #{data["method"]}"
+      
+    if params["method"] == "create" 
+      
+        #ONLY RETURN THE LINE ITEMS THAT HAVE PRODUCTS
+        #EXISTING IN SHOPIFY EVENTS
+        @lineitems = Array.new
+        @order = Order.new
+        
+        params["line_items"].each do |s|
+          if Product.find(s["product_id"])
+             puts "########################### PRODUCT IS A MATCH"
+          end
+        end
+        
+        
+        
+    else
+      
+      @instance = @class.where(shopify_id: params["id"])
+      
+      if !@instance.nil?
+        
+        @instance.update()  
+        
+      end
+      
+    end 
+=begin       
+      update
+      delete
+      
+      partially_fulfilled
+      paid
+      fulfilled
+      delete
+      create
+      cancelled
+      
+      uninstalled
+=end      
   
- end 
+ end
+  
+ 
 
 
 

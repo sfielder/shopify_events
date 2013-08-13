@@ -10,10 +10,6 @@ class HomeController < ApplicationController
   
   def index
      
-    
-    puts "&&&&&&&&&&&&&&& ShopifyWebhook.verify_webhooks #{ShopifyWebhook.verify_webhooks}"
-    puts "&&&&&&&&&&&&&&& Webhook.all.count #{Webhook.all.count}"
-     
     if ShopifyWebhook.verify_webhooks != Webhook.all.count #{request.protocol}#{request.host}
       
       Webhook.each do |wh|
@@ -24,7 +20,8 @@ class HomeController < ApplicationController
       
     end
     
-    puts "************ ShopifyWebhook.verify_webhooks #{ShopifyWebhook.verify_webhooks} " 
+    ShopifyWebhook.process_webhook_event(WebhookEvent.first)
+    
     @webhookcount = ShopifyWebhook.verify_webhooks
     # get latest 5 orders
     @orders   = Order.all.limit(5).order_by(:created_at.asc)

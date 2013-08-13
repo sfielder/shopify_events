@@ -4,15 +4,11 @@ class WebhookEventsController < ApplicationController
   
   def create
     
-    puts "%%%%%%%%%%%% parameters #{params}"
-    
     if Shop.find(params["shopid"])
+      
       @class = params["class"].classify.constantize 
       @instance = @class.where(shopify_id: params["id"])
-      
-      puts "########################### @class #{@class}"
-      puts "########################### @product #{@instance.to_json}"
-      
+    
       if !@instance.nil?
          @webhook_event = WebhookEvent.new(
           shop: Shop.find(params["shopid"]),
