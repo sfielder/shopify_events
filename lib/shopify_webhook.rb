@@ -16,7 +16,7 @@ class ShopifyWebhook
  end
  
  def self.process_webhook_event webhook_event
-    data = webhook_event.body
+    data = ActiveSupport::JSON.decode(webhook_event.body)
     puts "data = " + data.to_s
     
     @class = data["class"].classify.constantize 
