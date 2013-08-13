@@ -10,11 +10,11 @@ class HomeController < ApplicationController
   
   def index
      
-    if !ShopifyWebhook.verify_webhooks == Webhook.all.count #{request.protocol}#{request.host}
+    #if !ShopifyWebhook.verify_webhooks == Webhook.all.count #{request.protocol}#{request.host}
       Webhook.each do |wh|
         puts " WEBHOOK --------------- #{ShopifyAPI::Webhook.create(:address => "https://shopify-events.herokuapp.com/#{wh.address}/#{Mongoid::Multitenancy.current_tenant.id}/webhook.json", :format => "#{wh.format}", :topic => "#{wh.topic}").to_yaml}"
       end
-    end
+    #end
     
     puts "************ ShopifyWebhook.verify_webhooks #{ShopifyWebhook.verify_webhooks} " 
     @webhookcount = ShopifyWebhook.verify_webhooks
