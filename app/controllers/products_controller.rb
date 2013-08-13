@@ -9,11 +9,7 @@ class ProductsController < ApplicationController
     
       @products_previous = Product.previous.order_by(:starttime.asc)
       @products_upcoming = Product.upcoming.order_by(:starttime.asc)
-      @products = Product.all.order_by(:starttime.asc)
-      
-      puts "################## #{@products_previous.count}"
-      puts "################## #{@products_upcoming.count}"
-      puts "################## #{@products.count}"
+      @products = Product.all
       
       respond_to do |format|
       format.html # index.html.erb
